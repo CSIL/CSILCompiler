@@ -47,6 +47,11 @@ namespace Compiler.Lexer
                 }
             }
 
+            else if((token = manager.GetString(new Regex("^."))) != null)
+            {
+                return new Token(TokenType.invalid, "Invalid Token:" + token);
+            }
+
             else
             {
                 return new Token(TokenType.eof, "EOF");
