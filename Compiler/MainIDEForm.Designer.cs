@@ -254,7 +254,7 @@
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip;
             this.Name = "MainIDEForm";
-            this.Text = "MDIParent1";
+            this.Text = "TLANG IDE";
             this.Load += new System.EventHandler(this.MainIDEForm_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
