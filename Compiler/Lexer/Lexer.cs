@@ -15,7 +15,7 @@ namespace Compiler.Lexer
             manager = new CodeManager(code: code);
         }
 
-        public List<Token> getAllTokens()
+        public List<Token> GetAllTokens()
         {
             Token t;
             List<Token> tokens = new List<Token>();

@@ -115,7 +115,7 @@ namespace Compiler
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             Lexer.Lexer lexer = new Lexer.Lexer(code.Text);
-            tokens = lexer.getAllTokens();
+            tokens = lexer.GetAllTokens();
 
             Interpreter.MathCompiler mathCompiler = new Interpreter.MathCompiler(tokens.ToArray());
             toolStripStatusLabel.Text = mathCompiler.MainMethod();

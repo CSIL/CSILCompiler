@@ -36,6 +36,11 @@ namespace Compiler.Lexer
                 { "\\-", TokenType.sub },
                 { "\\*", TokenType.mul },
                 { "\\/", TokenType.div },
+                { "\\|", TokenType.orop },
+                { "&", TokenType.and },
+                { "\\^", TokenType.exor },
+                { ">>", TokenType.shr },
+                { "<<", TokenType.shl },
 
                 { "\\(", TokenType.lparen },
                 { "\\)", TokenType.rparen },
@@ -60,6 +65,10 @@ namespace Compiler.Lexer
             {
                 if((curtoken = manager.Get(token.Key)) != null)
                 {
+                    if(token.Value == TokenType.character_constant || token.Value == TokenType.string_constant)
+                    {
+                        return new Token(token.Value, curtoken.Remove(0,1).Remove(curtoken.Length-2, 1));
+                    }
                     if (keywords.Contains(curtoken))
                     {
                         return new Token(TokenType.keyword, curtoken);
