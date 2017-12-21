@@ -9,19 +9,49 @@ namespace Compiler.Interpreter
 {
     class MathCompiler
     {
+        /// <summary>
+        /// The List of tokens to be scanned
+        /// </summary>
         Lexer.Token[] tokens;
+
+        /// <summary>
+        /// The index of the current token
+        /// </summary>
         int tokIndex;
 
+
+        /// <summary>
+        /// Create a calculator program to parse the 
+        /// mathematical expression
+        /// </summary>
+        /// <param name="tokens">A sequence of tokens representing the expression</param>
         public MathCompiler(Lexer.Token[] tokens)
         {
             this.tokens = tokens;
         }
 
+        /// <summary>
+        /// Scan the tokens to get the result
+        /// </summary>
+        /// <returns>The result of the program</returns>
         public string MainMethod()
         {
-            return this.Expression().ToString();
+            try
+            {
+                return this.Expression().ToString();
+            } catch(Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("Error in processing expression, please retry", "Error");
+                return "";
+            }
         }
 
+
+        /// <summary>
+        /// Get the correct type of token
+        /// Throws an exception if the token is not the given type
+        /// </summary>
+        /// <param name="type">The type of the token to be matched</param>
         public void Eat(TokenType type)
         {
             if (tokIndex < tokens.Length)
@@ -37,15 +67,24 @@ namespace Compiler.Interpreter
             }
             else
             {
-                throw new ArgumentOutOfRangeException("Error, tried to eat nonexistent token");
+                throw new ArgumentOutOfRangeException("Error, tried to eat nonexistant token");
             }
 
         }
 
+
+        /// <summary>
+        /// A Mathematical factor
+        /// Factor = Number | ( Expression )
+        /// </summary>
+        /// <returns>the number or result of evaluating the parenthesized expression</returns>
         public float Factor()
         {
             float result = 0;
-
+            if(tokIndex >= tokens.Length)
+            {
+                throw new FormatException("Error, Not enough tokens to parse");
+            }
             if (tokens[tokIndex].GetTokenType() == TokenType.integer || tokens[tokIndex].GetTokenType() == TokenType.floating)
             {
                 if (tokens[tokIndex].GetTokenType() == TokenType.integer)
@@ -71,6 +110,11 @@ namespace Compiler.Interpreter
             throw new ArgumentException("Error, incorrect token encountered in parsing sequence");
         }
 
+        /// <summary>
+        /// A mathematical expression
+        /// Expression = Term [(PLUS | MINUS) Term]*
+        /// </summary>
+        /// <returns>The result of evaluating the expression</returns>
         public float Expression()
         {
             float result = Term();
@@ -92,6 +136,11 @@ namespace Compiler.Interpreter
             return result;
         }
 
+        /// <summary>
+        /// A Mathematical term
+        /// Term = Factor [(TIMES| DIVIDED) Term]*
+        /// </summary>
+        /// <returns>The result of evaluating the term</returns>
         public float Term()
         {
             float result = Factor();

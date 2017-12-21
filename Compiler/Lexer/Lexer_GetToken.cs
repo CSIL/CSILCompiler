@@ -15,14 +15,14 @@ namespace Compiler.Lexer
 
             manager.GetString(new Regex("^[ \t\n]+"));
 
-            if((token = manager.GetString(new Regex("^[0-9]*[\\.][0-9]+[Ff]*"))) != null)
+            if((token = manager.GetString(new Regex("^[0-9]*[\\.][0-9]+[Ff]?"))) != null)
             {
                 return new Token(TokenType.floating, token);
             } else if((token = manager.GetString(new Regex("^[0-9]+[fF]"))) != null)
             {
                 return new Token(TokenType.floating, token);
             }
-            else if ((token = manager.GetString(new Regex("^[0-9]+[uU]*"))) != null)
+            else if ((token = manager.GetString(new Regex("^[0-9]+[uU]?"))) != null)
             {
                 return new Token(TokenType.integer, token);
             }
