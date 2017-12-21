@@ -52,7 +52,7 @@ namespace Compiler.Interpreter
         /// Throws an exception if the token is not the given type
         /// </summary>
         /// <param name="type">The type of the token to be matched</param>
-        public void Eat(TokenType type)
+        public void Eat(string type)
         {
             if (tokIndex < tokens.Length)
             {
@@ -85,25 +85,25 @@ namespace Compiler.Interpreter
             {
                 throw new FormatException("Error, Not enough tokens to parse");
             }
-            if (tokens[tokIndex].GetTokenType() == TokenType.integer_constant || tokens[tokIndex].GetTokenType() == TokenType.floating_constant)
+            if (tokens[tokIndex].GetTokenType() == "integer_constant" || tokens[tokIndex].GetTokenType() == "floating_constant")
             {
-                if (tokens[tokIndex].GetTokenType() == TokenType.integer_constant)
+                if (tokens[tokIndex].GetTokenType() =="integer_constant")
                 {
-                    Eat(TokenType.integer_constant);
+                    Eat("integer_constant");
                     return float.Parse(tokens[tokIndex - 1].GetValue().TrimEnd("uU".ToArray()));
                 }
                 else
                 {
-                    Eat(TokenType.floating_constant);
+                    Eat("floating_constant");
                     return float.Parse(tokens[tokIndex - 1].GetValue().TrimEnd("fF".ToArray()));
                 }                
             }
 
-            else if(tokens[tokIndex].GetTokenType() == TokenType.lparen)
+            else if(tokens[tokIndex].GetTokenType() == "lparen")
             {
-                Eat(TokenType.lparen);
+                Eat("lparen");
                 result = Expression();
-                Eat(TokenType.rparen);
+                Eat("rparen");
                 return result;
             }
 
@@ -119,16 +119,16 @@ namespace Compiler.Interpreter
         {
             float result = Term();
 
-            while(tokIndex < tokens.Length && (tokens[tokIndex].GetTokenType() == TokenType.add ||
-                tokens[tokIndex].GetTokenType() == TokenType.sub))
+            while(tokIndex < tokens.Length && (tokens[tokIndex].GetTokenType() =="add" ||
+                tokens[tokIndex].GetTokenType() =="sub"))
             {
-                if(tokens[tokIndex].GetTokenType() == TokenType.add)
+                if(tokens[tokIndex].GetTokenType() == "add")
                 {
-                    Eat(TokenType.add);
+                    Eat("add");
                     result += Term();
-                } else if(tokens[tokIndex].GetTokenType() == TokenType.sub)
+                } else if(tokens[tokIndex].GetTokenType() == "sub")
                 {
-                    Eat(TokenType.sub);
+                    Eat("sub");
                     result -= Term();
                 }
             }
@@ -144,23 +144,18 @@ namespace Compiler.Interpreter
         public float Term()
         {
             float result = Factor();
-            while(tokIndex < tokens.Length && (tokens[tokIndex].GetTokenType() == TokenType.div ||
-                tokens[tokIndex].GetTokenType() == TokenType.mul ||
-                tokens[tokIndex].GetTokenType() == TokenType.mod))
+            while(tokIndex < tokens.Length && (tokens[tokIndex].GetTokenType() == "div" ||
+                tokens[tokIndex].GetTokenType() == "mul"))
             {
-                if (tokens[tokIndex].GetTokenType() == TokenType.div)
+                if (tokens[tokIndex].GetTokenType() == "div")
                 {
-                    Eat(TokenType.div);
+                    Eat("div");
                     result /= Factor();
                 }
-                else if (tokens[tokIndex].GetTokenType() == TokenType.mul)
+                else if (tokens[tokIndex].GetTokenType() == "mul")
                 {
-                    Eat(TokenType.mul);
+                    Eat("mul");
                     result *= Factor();
-                } else if(tokens[tokIndex].GetTokenType() == TokenType.mod)
-                {
-                    Eat(TokenType.mod);
-                    result = result % Factor();
                 }
             }
 

@@ -10,17 +10,17 @@ namespace Compiler.Lexer
 
     class Token
     {
-        TokenType Type;
+        string Type;
         string Contents;
 
-        public Token(TokenType type, string token)
+        public Token(string type, string token)
         {
             Type = type;
             Contents = token;
             Console.WriteLine(this);
         }
 
-        public TokenType GetTokenType()
+        public string GetTokenType()
         {
             return this.Type;
         }

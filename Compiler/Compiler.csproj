@@ -110,10 +110,8 @@
     <Compile Include="Lexer\CodeManager.cs" />
     <Compile Include="Lexer\LengthComparer.cs" />
     <Compile Include="Lexer\Lexer.cs" />
-    <Compile Include="Lexer\Lexer_GetTokenDictionary.cs" />
     <Compile Include="Lexer\Lexer_GetToken.cs" />
     <Compile Include="Lexer\Token.cs" />
-    <Compile Include="Lexer\TokenType.cs" />
     <Compile Include="MainIDEForm.cs">
       <SubType>Form</SubType>
     </Compile>
