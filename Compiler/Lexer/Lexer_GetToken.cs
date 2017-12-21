@@ -30,6 +30,12 @@ namespace Compiler.Lexer
                 }
                 curtoken = null;
             }
+
+            if((curtoken = manager.Get(".")) != null)
+            {
+                return new Token("invalid", curtoken);
+            }
+
             return new Token("eof", "EOF");
         }
     }

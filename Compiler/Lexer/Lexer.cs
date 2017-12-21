@@ -67,7 +67,6 @@ namespace Compiler.Lexer
             manager = new CodeManager(code: code);
             this.keywords = keywords;
             this.allowed_tokens = new SortedDictionary<string, string>(tokens, new LengthComparer());
-            this.allowed_tokens.Add(".", "invalid");
             this.comment_sequence = comment_sequence;
         }
 
