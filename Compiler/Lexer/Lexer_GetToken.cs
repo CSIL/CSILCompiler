@@ -15,9 +15,16 @@ namespace Compiler.Lexer
 
             manager.GetString(new Regex("^[ \t\n]+"));
 
-            if ((token = manager.GetString(new Regex("^[0-9]+"))) != null)
+            if((token = manager.GetString(new Regex("^[0-9]*[\\.][0-9]+[Ff]*"))) != null)
             {
-                return new Token(TokenType.number, token);
+                return new Token(TokenType.floating, token);
+            } else if((token = manager.GetString(new Regex("^[0-9]+[fF]"))) != null)
+            {
+                return new Token(TokenType.floating, token);
+            }
+            else if ((token = manager.GetString(new Regex("^[0-9]+[uU]*"))) != null)
+            {
+                return new Token(TokenType.integer, token);
             }
 
             else if ((token = manager.GetString(new Regex("^[a-zA-Z_][a-zA-Z0-9_]+"))) != null)
@@ -25,7 +32,7 @@ namespace Compiler.Lexer
                 return new Token(TokenType.identifier, token);
             }
 
-            else if ((token = manager.GetString(new Regex("^[+*/-]"))) != null){
+            else if ((token = manager.GetString(new Regex("^[+*/()-]"))) != null){
                 if(token == "+")
                 {
                     return new Token(TokenType.add, "+");
@@ -44,6 +51,12 @@ namespace Compiler.Lexer
                 else if(token == "/")
                 {
                     return new Token(TokenType.div, "/");
+                } else if(token == "(")
+                {
+                    return new Token(TokenType.lparen, "(");
+                } else if(token == ")")
+                {
+                    return new Token(TokenType.rparen, ")");
                 }
             }
 

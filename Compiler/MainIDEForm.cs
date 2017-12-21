@@ -27,7 +27,7 @@ namespace Compiler
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            openFileDialog.Filter = "Text Files (*.t)|*.t|All Files (*.*)|*.*";
+            openFileDialog.Filter = "TLANG Code (*.t)|*.t|All Files (*.*)|*.*";
             if (openFileDialog.ShowDialog(this) == DialogResult.OK)
             {
                 string FileName = openFileDialog.FileName;
@@ -39,7 +39,7 @@ namespace Compiler
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            saveFileDialog.Filter = "Text Files (*.t)|*.t|All Files (*.*)|*.*";
+            saveFileDialog.Filter = "TLANG Code (*.t)|*.t|All Files (*.*)|*.*";
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
                 string FileName = saveFileDialog.FileName;
@@ -108,16 +108,15 @@ namespace Compiler
 
         }
 
+
+        private List<Lexer.Token> tokens = new List<Lexer.Token>();
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             Lexer.Lexer lexer = new Lexer.Lexer(code.Text);
-            Lexer.Token t;
-            CompilerMessageForm messageForm = new CompilerMessageForm();
-            messageForm.Show();
-            while((t = lexer.getNextToken()).GetTokenType() != Lexer.TokenType.eof)
-            {
-                messageForm.AddTextLine(t.ToString());
-            }
+            tokens = lexer.getAllTokens();
+
+            Interpreter.MathCompiler mathCompiler = new Interpreter.MathCompiler(tokens.ToArray());
+            toolStripStatusLabel.Text = mathCompiler.MainMethod();
         }
     }
 }

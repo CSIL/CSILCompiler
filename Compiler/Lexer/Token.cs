@@ -9,12 +9,16 @@ namespace Compiler.Lexer
     public enum TokenType
     {
         invalid,
-        number,
+        integer,
+        floating,
         identifier,
         add,
         sub,
         mul,
         div,
+        mod,
+        lparen,
+        rparen,
         eof
     }
 
@@ -37,6 +41,11 @@ namespace Compiler.Lexer
         public override string ToString()
         {
             return Type.ToString() + " " + Contents;
+        }
+
+        public string GetValue()
+        {
+            return this.Contents;
         }
     }
 }

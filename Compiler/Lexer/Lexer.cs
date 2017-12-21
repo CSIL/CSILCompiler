@@ -15,5 +15,17 @@ namespace Compiler.Lexer
             manager = new CodeManager(code: code);
         }
 
+        public List<Token> getAllTokens()
+        {
+            Token t;
+            List<Token> tokens = new List<Token>();
+            while ((t = getNextToken()).GetTokenType() != TokenType.eof)
+            {
+                tokens.Add(t);
+            }
+
+            return tokens;
+        }
+
     }
 }
