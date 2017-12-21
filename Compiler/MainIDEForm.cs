@@ -111,9 +111,9 @@ namespace Compiler
         }
 
 
-        private List<Lexer.Token> tokens = new List<Lexer.Token>();
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
+            List<Lexer.Token> tokens = new List<Lexer.Token>();
             Lexer.Lexer lexer = new Lexer.Lexer(code.Text);
             tokens = lexer.GetAllTokens();
 
