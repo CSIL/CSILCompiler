@@ -39,7 +39,7 @@ namespace Compiler.Interpreter
             try
             {
                 return this.Expression().ToString();
-            } catch(Exception ex)
+            } catch
             {
                 System.Windows.Forms.MessageBox.Show("Error in processing expression, please retry", "Error");
                 return "";
@@ -85,16 +85,16 @@ namespace Compiler.Interpreter
             {
                 throw new FormatException("Error, Not enough tokens to parse");
             }
-            if (tokens[tokIndex].GetTokenType() == TokenType.integer || tokens[tokIndex].GetTokenType() == TokenType.floating)
+            if (tokens[tokIndex].GetTokenType() == TokenType.integer_constant || tokens[tokIndex].GetTokenType() == TokenType.floating_constant)
             {
-                if (tokens[tokIndex].GetTokenType() == TokenType.integer)
+                if (tokens[tokIndex].GetTokenType() == TokenType.integer_constant)
                 {
-                    Eat(TokenType.integer);
+                    Eat(TokenType.integer_constant);
                     return float.Parse(tokens[tokIndex - 1].GetValue().TrimEnd("uU".ToArray()));
                 }
                 else
                 {
-                    Eat(TokenType.floating);
+                    Eat(TokenType.floating_constant);
                     return float.Parse(tokens[tokIndex - 1].GetValue().TrimEnd("fF".ToArray()));
                 }                
             }

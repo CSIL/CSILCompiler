@@ -21,9 +21,9 @@ namespace Compiler.Lexer
             return Code;
         }
 
-        public string GetString(Regex regex)
+        public string Get(string regex)
         {
-            Match match = regex.Match(Code);
+            Match match = new Regex("^"+regex).Match(Code);
             if(match.Value != string.Empty)
             {
                 Code = Code.Remove(0, match.Value.Length);
@@ -33,16 +33,6 @@ namespace Compiler.Lexer
             {
                 return null;
             }
-        }
-
-        public bool GetString(string sequence)
-        {
-            if (Code.StartsWith(sequence))
-            {
-                Code = Code.Remove(0, sequence.Length);
-                return true;
-            }
-            return false;
         }
 
         public void PutString(string sequence)

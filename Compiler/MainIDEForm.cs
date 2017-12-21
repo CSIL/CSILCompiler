@@ -12,7 +12,9 @@ namespace Compiler
 {
     public partial class MainIDEForm : Form
     {
-
+        /// <summary>
+        /// Create a new ideForm and initialize it
+        /// </summary>
         public MainIDEForm()
         {
             InitializeComponent();

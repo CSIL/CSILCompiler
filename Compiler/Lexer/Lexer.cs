@@ -19,7 +19,7 @@ namespace Compiler.Lexer
         {
             Token t;
             List<Token> tokens = new List<Token>();
-            while ((t = getNextToken()).GetTokenType() != TokenType.eof)
+            while ((t = getNextTokenDictionary()).GetTokenType() != TokenType.eof)
             {
                 tokens.Add(t);
             }

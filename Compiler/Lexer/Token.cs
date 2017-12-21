@@ -6,21 +6,7 @@ using System.Threading.Tasks;
 
 namespace Compiler.Lexer
 {
-    public enum TokenType
-    {
-        invalid,
-        integer,
-        floating,
-        identifier,
-        add,
-        sub,
-        mul,
-        div,
-        mod,
-        lparen,
-        rparen,
-        eof
-    }
+    
 
     class Token
     {
@@ -31,6 +17,7 @@ namespace Compiler.Lexer
         {
             Type = type;
             Contents = token;
+            Console.WriteLine(this);
         }
 
         public TokenType GetTokenType()

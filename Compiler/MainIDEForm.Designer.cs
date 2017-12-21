@@ -1,5 +1,8 @@
 ﻿namespace Compiler
 {
+    /// <summary>
+    /// The main form for the ide
+    /// </summary>
     partial class MainIDEForm
     {
         /// <summary>
@@ -64,7 +67,7 @@
             this.helpMenu});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(632, 24);
+            this.menuStrip.Size = new System.Drawing.Size(898, 24);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "MenuStrip";
             // 
@@ -172,7 +175,7 @@
             this.toolStripButton1});
             this.toolStrip.Location = new System.Drawing.Point(0, 24);
             this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(632, 25);
+            this.toolStrip.Size = new System.Drawing.Size(898, 25);
             this.toolStrip.TabIndex = 1;
             this.toolStrip.Text = "ToolStrip";
             // 
@@ -220,9 +223,9 @@
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel});
-            this.statusStrip.Location = new System.Drawing.Point(0, 431);
+            this.statusStrip.Location = new System.Drawing.Point(0, 672);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(632, 22);
+            this.statusStrip.Size = new System.Drawing.Size(898, 22);
             this.statusStrip.TabIndex = 2;
             this.statusStrip.Text = "StatusStrip";
             // 
@@ -234,19 +237,21 @@
             // 
             // code
             // 
+            this.code.AcceptsReturn = true;
+            this.code.AcceptsTab = true;
             this.code.Dock = System.Windows.Forms.DockStyle.Fill;
             this.code.Font = new System.Drawing.Font("Monospac821 BT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.code.Location = new System.Drawing.Point(0, 49);
             this.code.Multiline = true;
             this.code.Name = "code";
-            this.code.Size = new System.Drawing.Size(632, 382);
+            this.code.Size = new System.Drawing.Size(898, 623);
             this.code.TabIndex = 4;
             // 
             // MainIDEForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(632, 453);
+            this.ClientSize = new System.Drawing.Size(898, 694);
             this.Controls.Add(this.code);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.toolStrip);

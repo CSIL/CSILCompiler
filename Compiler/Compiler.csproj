@@ -23,7 +23,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationRevision>2</ApplicationRevision>
     <ApplicationVersion>0.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -87,9 +87,12 @@
     <Compile Include="AST\AST.cs" />
     <Compile Include="Interpreter\MathCompiler.cs" />
     <Compile Include="Lexer\CodeManager.cs" />
+    <Compile Include="Lexer\LengthComparer.cs" />
     <Compile Include="Lexer\Lexer.cs" />
+    <Compile Include="Lexer\Lexer_GetTokenDictionary.cs" />
     <Compile Include="Lexer\Lexer_GetToken.cs" />
     <Compile Include="Lexer\Token.cs" />
+    <Compile Include="Lexer\TokenType.cs" />
     <Compile Include="MainIDEForm.cs">
       <SubType>Form</SubType>
     </Compile>
