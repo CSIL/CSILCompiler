@@ -1,5 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Lexer.Implementation;
+﻿using Lexer.Implementation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,25 +7,30 @@ using System.Threading.Tasks;
 
 namespace Lexer.Implementation.Tests
 {
-    [TestClass()]
     public class RegexLexerTests
     {
-        [TestMethod()]
-        public void RegexLexerTest()
+        public bool RegexLexerTest()
         {
-            Assert.AreEqual(true, true);
+            return true;
         }
 
-        [TestMethod()]
-        public void RegexLexerTest1()
+        public bool RegexLexerTest1()
         {
-            Assert.AreEqual(true, true);
+            return true;
         }
 
-        [TestMethod()]
-        public void GetAllTokensTest()
+        public bool GetAllTokensTest()
         {
-            Assert.AreEqual(true, true);
+            return true;
+        }
+
+        public bool RunallTests()
+        {
+            if (!RegexLexerTest()) return false;
+            if (!RegexLexerTest1()) return false;
+            if (!GetAllTokensTest()) return false;
+
+            return true;
         }
     }
 }
