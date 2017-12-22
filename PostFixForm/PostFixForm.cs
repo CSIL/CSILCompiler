@@ -44,9 +44,9 @@ namespace PostFixForm
 
         }
 
-        public AST.AST Expression()
+        public MathAST.AST Expression()
         {
-            AST.AST node = Term();
+            MathAST.AST node = Term();
             while(curindex < tokens.Length && (tokens[curindex].GetTokenType() == "add" || tokens[curindex].GetTokenType() == "sub"))
             {
                 Lexer.Interfaces.IToken<string, string> token = tokens[curindex];
@@ -57,14 +57,14 @@ namespace PostFixForm
                 {
                     Eat("sub");
                 }
-                node = new AST.BinOpAST(node, Term(), token);
+                node = new MathAST.BinOpAST(node, Term(), token);
             }
             return node;
         }
 
-        public AST.AST Term()
+        public MathAST.AST Term()
         {
-            AST.AST node = Factor();
+            MathAST.AST node = Factor();
             while(curindex < tokens.Length && ( tokens[curindex].GetTokenType() == "mul" || tokens[curindex].GetTokenType() == "div"))
             {
                 Lexer.Interfaces.IToken<string, string> token = tokens[curindex];
@@ -75,12 +75,12 @@ namespace PostFixForm
                 {
                     Eat("div");
                 }
-                node = new AST.BinOpAST(node, Factor(), token);
+                node = new MathAST.BinOpAST(node, Factor(), token);
             }
             return node;
         }
 
-        public AST.AST Factor()
+        public MathAST.AST Factor()
         {
             if (curindex >= tokens.Length)
             {
@@ -89,11 +89,11 @@ namespace PostFixForm
             if (tokens[curindex].GetTokenType() == "integer_constant" || tokens[curindex].GetTokenType() == "floating_constant")
             {
                 Eat("integer_constant");
-                return new AST.NumAST(tokens[curindex - 1]);
+                return new MathAST.NumAST(tokens[curindex - 1]);
             } else if(tokens[curindex].GetTokenType() == "lparen")
             {
                 Eat("lparen");
-                AST.AST node = Expression();
+                MathAST.AST node = Expression();
                 Eat("rparen");
                 return node;
             }

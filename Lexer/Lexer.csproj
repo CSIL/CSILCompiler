@@ -107,6 +107,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\ICodeTokenizer.cs" />
     <Compile Include="Interfaces\IStringLexer.cs" />
     <Compile Include="Implementations\RegexCodeTokenizer.cs" />
     <Compile Include="Implementations\LengthComparer.cs" />

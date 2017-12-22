@@ -7,7 +7,7 @@ namespace Lexer.Implementation
     /// </summary>
     public partial class RegexLexer: Interfaces.IStringLexer<Interfaces.IToken<string, string>>
     {
-        RegexCodeTokenizer manager;
+        Interfaces.ICodeTokenizer manager;
 
         string comment_sequence = "/\\*([^*]|[\r\n]|(\\*+([^*/]|[\r\n])))*\\*+/";
         string include_sequence = "#include<[a-zA-Z:\\.\\\\/]+>";
@@ -71,7 +71,7 @@ namespace Lexer.Implementation
         public RegexLexer(string code, List<string> keywords, Dictionary<string, string> tokens, 
             string comment_sequence, string include_sequence)
         {
-            manager = new RegexCodeTokenizer(code: code);
+            this.manager = new RegexCodeTokenizer(code: code);
             this.keywords = keywords;
             this.allowed_tokens = new SortedDictionary<string, string>(tokens, new LengthComparer());
             this.comment_sequence = comment_sequence;

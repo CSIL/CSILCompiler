@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Lexer;
 
-namespace AST
+namespace MathAST
 {
     public class AST
     {

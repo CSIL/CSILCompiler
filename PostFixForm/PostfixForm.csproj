@@ -45,9 +45,9 @@
     <Compile Include="Program.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AST\AST.csproj">
+    <ProjectReference Include="..\AST\MathAST.csproj">
       <Project>{15c0f415-e8d7-45fb-8519-8f574ce2a972}</Project>
-      <Name>AST</Name>
+      <Name>MathAST</Name>
     </ProjectReference>
     <ProjectReference Include="..\Lexer\Lexer.csproj">
       <Project>{709e92eb-e479-4911-8b09-3a09146d66da}</Project>

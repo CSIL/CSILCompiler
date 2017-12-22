@@ -2,7 +2,7 @@
 
 namespace Lexer.Implementation
 {
-    class RegexCodeTokenizer
+    class RegexCodeTokenizer: Interfaces.ICodeTokenizer
     {
         string Code;
 
@@ -11,7 +11,7 @@ namespace Lexer.Implementation
             this.Code = code;
         }
 
-        public string self()
+        public string Self()
         {
             return Code;
         }
@@ -30,9 +30,9 @@ namespace Lexer.Implementation
             }
         }
 
-        public void PutString(string sequence)
+        public void PutString(string toPut)
         {
-            Code = sequence + Code;
+            Code = toPut + Code;
         }
        
 
