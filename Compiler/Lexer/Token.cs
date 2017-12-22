@@ -17,7 +17,9 @@ namespace Compiler.Lexer
         {
             Type = type;
             Contents = token;
+#if false
             Console.WriteLine(this);
+#endif
         }
 
         public string GetTokenType()

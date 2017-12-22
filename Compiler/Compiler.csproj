@@ -113,7 +113,6 @@
     <Compile Include="Lexer\Lexer.cs" />
     <Compile Include="Lexer\Lexer_GetToken.cs" />
     <Compile Include="Lexer\Token.cs" />
-    <Compile Include="MathCompiler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
