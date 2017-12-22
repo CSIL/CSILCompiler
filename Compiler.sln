@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathAST", "AST\MathAST.cspr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostfixForm", "PostFixForm\PostfixForm.csproj", "{6F13CD4B-10EE-4398-8523-EFCAF3A53C74}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LexerTests", "LexerTests\LexerTests.csproj", "{9E8AEA25-0DC3-4C3F-8827-6C297DE49364}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,6 +52,14 @@ Global
 		{6F13CD4B-10EE-4398-8523-EFCAF3A53C74}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6F13CD4B-10EE-4398-8523-EFCAF3A53C74}.Release|x64.ActiveCfg = Release|Any CPU
 		{6F13CD4B-10EE-4398-8523-EFCAF3A53C74}.Release|x64.Build.0 = Release|Any CPU
+		{9E8AEA25-0DC3-4C3F-8827-6C297DE49364}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E8AEA25-0DC3-4C3F-8827-6C297DE49364}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E8AEA25-0DC3-4C3F-8827-6C297DE49364}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{9E8AEA25-0DC3-4C3F-8827-6C297DE49364}.Debug|x64.Build.0 = Debug|Any CPU
+		{9E8AEA25-0DC3-4C3F-8827-6C297DE49364}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E8AEA25-0DC3-4C3F-8827-6C297DE49364}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E8AEA25-0DC3-4C3F-8827-6C297DE49364}.Release|x64.ActiveCfg = Release|Any CPU
+		{9E8AEA25-0DC3-4C3F-8827-6C297DE49364}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
