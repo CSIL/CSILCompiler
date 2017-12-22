@@ -6,6 +6,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lexer", "Lexer\Lexer.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathCompiler", "MathCompiler\MathCompiler.csproj", "{EAE11E33-89DF-4146-941C-4777F4CD918C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AST", "AST\AST.csproj", "{15C0F415-E8D7-45FB-8519-8F574CE2A972}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostfixForm", "PostFixForm\PostfixForm.csproj", "{6F13CD4B-10EE-4398-8523-EFCAF3A53C74}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +34,22 @@ Global
 		{EAE11E33-89DF-4146-941C-4777F4CD918C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EAE11E33-89DF-4146-941C-4777F4CD918C}.Release|x64.ActiveCfg = Release|Any CPU
 		{EAE11E33-89DF-4146-941C-4777F4CD918C}.Release|x64.Build.0 = Release|Any CPU
+		{15C0F415-E8D7-45FB-8519-8F574CE2A972}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15C0F415-E8D7-45FB-8519-8F574CE2A972}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15C0F415-E8D7-45FB-8519-8F574CE2A972}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{15C0F415-E8D7-45FB-8519-8F574CE2A972}.Debug|x64.Build.0 = Debug|Any CPU
+		{15C0F415-E8D7-45FB-8519-8F574CE2A972}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15C0F415-E8D7-45FB-8519-8F574CE2A972}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15C0F415-E8D7-45FB-8519-8F574CE2A972}.Release|x64.ActiveCfg = Release|Any CPU
+		{15C0F415-E8D7-45FB-8519-8F574CE2A972}.Release|x64.Build.0 = Release|Any CPU
+		{6F13CD4B-10EE-4398-8523-EFCAF3A53C74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F13CD4B-10EE-4398-8523-EFCAF3A53C74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F13CD4B-10EE-4398-8523-EFCAF3A53C74}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{6F13CD4B-10EE-4398-8523-EFCAF3A53C74}.Debug|x64.Build.0 = Debug|Any CPU
+		{6F13CD4B-10EE-4398-8523-EFCAF3A53C74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F13CD4B-10EE-4398-8523-EFCAF3A53C74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F13CD4B-10EE-4398-8523-EFCAF3A53C74}.Release|x64.ActiveCfg = Release|Any CPU
+		{6F13CD4B-10EE-4398-8523-EFCAF3A53C74}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

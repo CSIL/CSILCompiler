@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Lexer")]
+[assembly: AssemblyTitle("AST")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("Lexer")]
-[assembly: AssemblyCopyright("Copyright © Thomas Terry")]
+[assembly: AssemblyProduct("AST")]
+[assembly: AssemblyCopyright("Copyright © Microsoft 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("709e92eb-e479-4911-8b09-3a09146d66da")]
+[assembly: Guid("15c0f415-e8d7-45fb-8519-8f574ce2a972")]
 
 // Version information for an assembly consists of the following four values:
 //
