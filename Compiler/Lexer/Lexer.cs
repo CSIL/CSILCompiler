@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Compiler.Lexer
 {
+    /// <summary>
+    /// A program to go through the input and get a list of the tokens in it
+    /// </summary>
     public partial class Lexer
     {
         CodeManager manager;
@@ -62,6 +65,13 @@ namespace Compiler.Lexer
                 { "\\.", "dot" },
         };
 
+        /// <summary>
+        /// Create a new lexer
+        /// </summary>
+        /// <param name="code">the code to be parsed</param>
+        /// <param name="keywords">a list of language keywords</param>
+        /// <param name="tokens">a list of regexes and token types to compare the code to</param>
+        /// <param name="comment_sequence">the language sequence for ignorable comments</param>
         public Lexer(string code, List<string> keywords, Dictionary<string, string> tokens, string comment_sequence)
         {
             manager = new CodeManager(code: code);
@@ -70,11 +80,19 @@ namespace Compiler.Lexer
             this.comment_sequence = comment_sequence;
         }
 
+        /// <summary>
+        /// A lexer that uses the default tokens to parse
+        /// </summary>
+        /// <param name="code">the code to be parsed</param>
         public Lexer(string code)
         {
             manager = new CodeManager(code: code);
         }
 
+        /// <summary>
+        /// Go through the input and make a list of tokens
+        /// </summary>
+        /// <returns>The list of tokens representing the input</returns>
         public List<Token> GetAllTokens()
         {
             Token t;

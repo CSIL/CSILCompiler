@@ -9,6 +9,11 @@ namespace Compiler.Lexer
 {
     public partial class Lexer
     {
+        /// <summary>
+        /// Get the next token off of the input 
+        /// base on a set or regex rules
+        /// </summary>
+        /// <returns>A new token from the input</returns>
         public Token getNextToken()
         {
 
