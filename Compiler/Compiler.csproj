@@ -108,7 +108,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AST\AST.cs" />
     <Compile Include="Lexer\CodeManager.cs" />
     <Compile Include="Lexer\LengthComparer.cs" />
     <Compile Include="Lexer\Lexer.cs" />
