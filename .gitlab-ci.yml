@@ -2,15 +2,9 @@ image: mono:4.4.0.182
 
 stages:
   - build
-  - test
   
 compile:
     stage: build
     script:
         - nuget restore
         - MONO_IOMAP=case xbuild /t:Build /p:Configuration="Release" /p:Platform="x64" Compiler.sln
-        
-runtest:
-    stage: test
-    script:
-        - mono Lexer\\bin\\x64\\Release\\Lexer.exe
