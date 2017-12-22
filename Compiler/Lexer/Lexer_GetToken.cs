@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 
 namespace Compiler.Lexer
 {
-    partial class Lexer
+    public partial class Lexer
     {
         public Token getNextToken()
         {

@@ -1,4 +1,4 @@
-﻿namespace Compiler
+﻿namespace MathCompiler
 {
     /// <summary>
     /// The main form for the ide

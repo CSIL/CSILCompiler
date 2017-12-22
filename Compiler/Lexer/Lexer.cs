@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Compiler.Lexer
 {
-    partial class Lexer
+    public partial class Lexer
     {
         CodeManager manager;
 

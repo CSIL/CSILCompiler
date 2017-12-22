@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Compiler
+namespace MathCompiler
 {
     public partial class MainIDEForm : Form
     {
@@ -113,11 +113,11 @@ namespace Compiler
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            List<Lexer.Token> tokens = new List<Lexer.Token>();
-            Lexer.Lexer lexer = new Lexer.Lexer(code.Text);
+            List<Compiler.Lexer.Token> tokens = new List<Compiler.Lexer.Token>();
+            Compiler.Lexer.Lexer lexer = new Compiler.Lexer.Lexer(code.Text);
             tokens = lexer.GetAllTokens();
 
-            Interpreter.MathCompiler mathCompiler = new Interpreter.MathCompiler(tokens.ToArray());
+            MathCompiler mathCompiler = new MathCompiler(tokens.ToArray());
             toolStripStatusLabel.Text = mathCompiler.MainMethod();
         }
     }

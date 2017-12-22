@@ -8,7 +8,7 @@ namespace Compiler.Lexer
 {
     
 
-    class Token
+    public class Token
     {
         string Type;
         string Contents;
