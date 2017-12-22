@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathAST", "AST\MathAST.cspr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostfixForm", "PostFixForm\PostfixForm.csproj", "{6F13CD4B-10EE-4398-8523-EFCAF3A53C74}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClangCompiler", "ClangCompiler\ClangCompiler.csproj", "{D350AE52-44C9-43C1-90E9-4BC9190AC12C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,6 +52,14 @@ Global
 		{6F13CD4B-10EE-4398-8523-EFCAF3A53C74}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6F13CD4B-10EE-4398-8523-EFCAF3A53C74}.Release|x64.ActiveCfg = Release|Any CPU
 		{6F13CD4B-10EE-4398-8523-EFCAF3A53C74}.Release|x64.Build.0 = Release|Any CPU
+		{D350AE52-44C9-43C1-90E9-4BC9190AC12C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D350AE52-44C9-43C1-90E9-4BC9190AC12C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D350AE52-44C9-43C1-90E9-4BC9190AC12C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D350AE52-44C9-43C1-90E9-4BC9190AC12C}.Debug|x64.Build.0 = Debug|Any CPU
+		{D350AE52-44C9-43C1-90E9-4BC9190AC12C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D350AE52-44C9-43C1-90E9-4BC9190AC12C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D350AE52-44C9-43C1-90E9-4BC9190AC12C}.Release|x64.ActiveCfg = Release|Any CPU
+		{D350AE52-44C9-43C1-90E9-4BC9190AC12C}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

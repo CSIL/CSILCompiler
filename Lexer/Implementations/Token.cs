@@ -18,7 +18,6 @@
         {
             Type = type;
             Contents = token;
-            System.Console.WriteLine(this);
         }
 
 
