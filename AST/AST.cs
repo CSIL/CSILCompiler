@@ -9,7 +9,7 @@ namespace AST
 {
     public class AST
     {
-        protected Token self;
+        protected Lexer.Interfaces.IToken<string, string> self;
 
         public override string ToString()
         {
@@ -22,7 +22,7 @@ namespace AST
         protected AST left;
         protected AST right;
 
-        public BinOpAST(AST left, AST right, Token op)
+        public BinOpAST(AST left, AST right, Lexer.Interfaces.IToken<string, string> op)
         {
             this.self = op;
             this.left = left;
@@ -38,7 +38,7 @@ namespace AST
     public class NumAST: AST
     {
         float value;
-        public NumAST(Token num)
+        public NumAST(Lexer.Interfaces.IToken<string, string> num)
         {
             this.self = num;
             this.value = float.Parse(this.self.GetValue());

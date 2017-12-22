@@ -8,10 +8,10 @@ namespace PostFixForm
 {
     class PostFixForm
     {
-        Lexer.Token[] tokens;
+        Lexer.Interfaces.IToken<string, string>[] tokens;
         int curindex = 0;
 
-        public PostFixForm(Lexer.Token[] tokens)
+        public PostFixForm(Lexer.Interfaces.IToken<string, string>[] tokens)
         {
             this.tokens = tokens;
             try
@@ -49,7 +49,7 @@ namespace PostFixForm
             AST.AST node = Term();
             while(curindex < tokens.Length && (tokens[curindex].GetTokenType() == "add" || tokens[curindex].GetTokenType() == "sub"))
             {
-                Lexer.Token token = tokens[curindex];
+                Lexer.Interfaces.IToken<string, string> token = tokens[curindex];
                 if (token.GetTokenType() == "add") {
                     Eat("add");
                 }
@@ -67,7 +67,7 @@ namespace PostFixForm
             AST.AST node = Factor();
             while(curindex < tokens.Length && ( tokens[curindex].GetTokenType() == "mul" || tokens[curindex].GetTokenType() == "div"))
             {
-                Lexer.Token token = tokens[curindex];
+                Lexer.Interfaces.IToken<string, string> token = tokens[curindex];
                 if(tokens[curindex].GetTokenType() == "mul")
                 {
                     Eat("mul");

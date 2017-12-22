@@ -11,9 +11,10 @@ namespace MathCompiler
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainIDEForm());
+            string Expression = Microsoft.VisualBasic.Interaction.InputBox("Input an expression", "Expression Input", "1+1");
+            Lexer.Interfaces.IStringLexer<Lexer.Interfaces.IToken<string, string>> lexer = new Lexer.Implementation.RegexLexer(Expression);
+            MathCompiler compiler = new MathCompiler(lexer.GetAllTokens().ToArray());
+            MessageBox.Show(compiler.MainMethod());
         }
     }
 }

@@ -12,7 +12,7 @@ namespace MathCompiler
         static void Main()
         {
             string Expression = Microsoft.VisualBasic.Interaction.InputBox("Input an expression: ", "Math Input", "1+1");
-            Lexer.Lexer lexer = new Lexer.Lexer(Expression);
+            Lexer.Interfaces.IStringLexer<Lexer.Interfaces.IToken<string, string>> lexer = new Lexer.Implementation.RegexLexer(Expression);
             PostFixForm.PostFixForm form = new PostFixForm.PostFixForm(lexer.GetAllTokens().ToArray());
         }
     }
