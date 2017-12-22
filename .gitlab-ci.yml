@@ -13,4 +13,4 @@ compile:
 runtest:
     stage: test
     script:
-        - mono Lexer\\bin\\Release\\Compiler.exe
+        - mono Lexer\\bin\\x64\\Release\\Lexer.exe
