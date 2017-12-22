@@ -18,9 +18,7 @@
         {
             Type = type;
             Contents = token;
-#if false
-            Console.WriteLine(this);
-#endif
+            System.Console.WriteLine(this);
         }
 
 
@@ -40,7 +38,7 @@
         /// <returns>A string representing the token</returns>
         public override string ToString()
         {
-            return Type.ToString() + " " + Contents;
+            return Type + " " + Contents;
         }
 
         /// <summary>

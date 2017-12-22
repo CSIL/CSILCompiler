@@ -14,7 +14,14 @@ namespace PostFixForm
         public PostFixForm(Lexer.Token[] tokens)
         {
             this.tokens = tokens;
-            System.Windows.Forms.MessageBox.Show(Expression().ToString(), "Postfix Expression");
+            try
+            {
+                System.Windows.Forms.MessageBox.Show(Expression().ToString(), "Postfix Expression");
+            }
+            catch(Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
         }
 
         public void Eat(string type)
@@ -90,7 +97,7 @@ namespace PostFixForm
                 Eat("rparen");
                 return node;
             }
-            throw new Exception("Error, incorrect token" + tokens[curindex]);
+            throw new ArgumentException("Error, incorrect token: " + tokens[curindex].GetValue());
         }
     }
 }

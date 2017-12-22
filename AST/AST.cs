@@ -19,20 +19,19 @@ namespace AST
 
     public class BinOpAST: AST
     {
-        public AST left;
-        public AST right;
-        public Token op;
+        protected AST left;
+        protected AST right;
 
         public BinOpAST(AST left, AST right, Token op)
         {
-            this.op = this.self = op;
+            this.self = op;
             this.left = left;
             this.right = right;
         }
 
         public override string ToString()
         {
-            return left.ToString() + " " + right.ToString() + " " + op.GetValue();
+            return left.ToString() + " " + right.ToString() + " " + self.GetValue();
         }
     }
 

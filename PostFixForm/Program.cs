@@ -11,9 +11,9 @@ namespace MathCompiler
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainIDEForm());
+            string Expression = Microsoft.VisualBasic.Interaction.InputBox("Input an expression: ", "Math Input", "1+1");
+            Lexer.Lexer lexer = new Lexer.Lexer(Expression);
+            PostFixForm.PostFixForm form = new PostFixForm.PostFixForm(lexer.GetAllTokens().ToArray());
         }
     }
 }

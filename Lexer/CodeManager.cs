@@ -2,11 +2,11 @@
 
 namespace Lexer
 {
-    class CodeManager
+    class CodeTokenizer
     {
         string Code;
 
-        public CodeManager(string code)
+        public CodeTokenizer(string code)
         {
             this.Code = code;
         }

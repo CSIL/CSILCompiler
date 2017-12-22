@@ -7,9 +7,10 @@ namespace Lexer
     /// </summary>
     public partial class Lexer
     {
-        CodeManager manager;
+        CodeTokenizer manager;
 
         string comment_sequence = "/\\*([^*]|[\r\n]|(\\*+([^*/]|[\r\n])))*\\*+/";
+        string include_sequence = "#include<[a-zA-Z:\\.\\\\/]+>";
 
         /// <summary>
         /// Default language keywords
@@ -35,8 +36,6 @@ namespace Lexer
                 { "\'([^\'\\\\]|\\\\.)*\'", "character_constant" },
                 { "[0-9]*[\\.][0-9]+", "floating_constant" },
                 { "[0-9]+", "integer_constant" },
-
-                { "[a-zA-Z_][a-zA-Z0-9_]*", "identifier" },
 
                 { "\\+", "add" },
                 { "\\-", "sub" },
@@ -68,12 +67,13 @@ namespace Lexer
         /// <param name="keywords">a list of language keywords</param>
         /// <param name="tokens">a list of regexes and token types to compare the code to</param>
         /// <param name="comment_sequence">the language sequence for ignorable comments</param>
-        public Lexer(string code, List<string> keywords, Dictionary<string, string> tokens, string comment_sequence)
+        public Lexer(string code, List<string> keywords, Dictionary<string, string> tokens, string comment_sequence, string include_sequence)
         {
-            manager = new CodeManager(code: code);
+            manager = new CodeTokenizer(code: code);
             this.keywords = keywords;
             this.allowed_tokens = new SortedDictionary<string, string>(tokens, new LengthComparer());
             this.comment_sequence = comment_sequence;
+            this.include_sequence = include_sequence;
         }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace Lexer
         /// <param name="code">the code to be parsed</param>
         public Lexer(string code)
         {
-            manager = new CodeManager(code: code);
+            manager = new CodeTokenizer(code: code);
         }
 
         /// <summary>

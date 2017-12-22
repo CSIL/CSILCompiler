@@ -42,18 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PostFixForm.cs" />
-    <Compile Include="MainIDEForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MainIDEForm.Designer.cs">
-      <DependentUpon>MainIDEForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="MainIDEForm.resx">
-      <DependentUpon>MainIDEForm.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AST\AST.csproj">
@@ -66,6 +55,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
