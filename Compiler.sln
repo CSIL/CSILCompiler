@@ -1,9 +1,9 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27205.2004
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lexer", "Compiler\Lexer.csproj", "{709E92EB-E479-4911-8B09-3A09146D66DA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lexer", "Lexer\Lexer.csproj", "{709E92EB-E479-4911-8B09-3A09146D66DA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathCompiler", "MathCompiler\MathCompiler.csproj", "{EAE11E33-89DF-4146-941C-4777F4CD918C}"
 EndProject
