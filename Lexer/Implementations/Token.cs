@@ -1,10 +1,10 @@
-﻿namespace Lexer
+﻿namespace Lexer.Implementation
 {
 
     /// <summary>
     /// A parser token
     /// </summary>
-    public class Token
+    public class Token:Interfaces.IToken<string , string>
     {
         string Type;
         string Contents;

@@ -1,12 +1,12 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace Lexer
+namespace Lexer.Implementation
 {
-    class CodeTokenizer
+    class RegexCodeTokenizer
     {
         string Code;
 
-        public CodeTokenizer(string code)
+        public RegexCodeTokenizer(string code)
         {
             this.Code = code;
         }

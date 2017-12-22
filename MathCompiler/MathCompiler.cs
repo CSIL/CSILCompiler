@@ -9,7 +9,7 @@ namespace MathCompiler
         /// <summary>
         /// The List of tokens to be scanned
         /// </summary>
-        Token[] tokens;
+        Lexer.Interfaces.IToken<string, string>[] tokens;
 
         /// <summary>
         /// The index of the current token
@@ -22,7 +22,7 @@ namespace MathCompiler
         /// mathematical expression
         /// </summary>
         /// <param name="tokens">A sequence of tokens representing the expression</param>
-        public MathCompiler(Token[] tokens)
+        public MathCompiler(Lexer.Interfaces.IToken<string, string>[] tokens)
         {
             this.tokens = tokens;
         }

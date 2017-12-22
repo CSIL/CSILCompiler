@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
 
-namespace Lexer
+namespace Lexer.Implementation
 {
-    public partial class Lexer
+    public partial class RegexLexer: Interfaces.IStringLexer<Interfaces.IToken<string, string>>
     {
         /// <summary>
         /// Get the next token off of the input 
         /// base on a set or regex rules
         /// </summary>
         /// <returns>A new token from the input</returns>
-        public Token getNextToken()
+        public Interfaces.IToken<string, string> GetNextToken()
         {
             string curtoken;
 

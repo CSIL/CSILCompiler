@@ -11,21 +11,22 @@ namespace MathCompiler
         /// <summary>
         /// Create a new ideForm and initialize it
         /// </summary>
-        public MainIDEForm()
-        {
-            InitializeComponent();
-        }
+        public MainIDEForm() => InitializeComponent();
 
-        private void ShowNewForm(object sender, EventArgs e)
-        {
-            code.Text = "";
-        }
+        private void NewFile(object sender, EventArgs e) => code.Text = "";
 
+        /// <summary>
+        /// Open a file and read the code into the buffer
+        /// </summary>
+        /// <param name="sender">The Form that sent the request</param>
+        /// <param name="e">The event data</param>
         private void OpenFile(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            openFileDialog.Filter = "TLANG Code (*.t)|*.t|All Files (*.*)|*.*";
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal),
+                Filter = "TLANG Code (*.t)|*.t|All Files (*.*)|*.*"
+            };
             if (openFileDialog.ShowDialog(this) == DialogResult.OK)
             {
                 string FileName = openFileDialog.FileName;
@@ -33,11 +34,18 @@ namespace MathCompiler
             }
         }
 
-        private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Read the text from the buffer into the selected file
+        /// </summary>
+        /// <param name="sender">The form that sent the request</param>
+        /// <param name="e">The event data</param>
+        private void SaveToolStripButton_Click(object sender, EventArgs e)
         {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            saveFileDialog.Filter = "TLANG Code (*.t)|*.t|All Files (*.*)|*.*";
+            SaveFileDialog saveFileDialog = new SaveFileDialog
+            {
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal),
+                Filter = "TLANG Code (*.t)|*.t|All Files (*.*)|*.*"
+            };
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
                 string FileName = saveFileDialog.FileName;
@@ -45,18 +53,11 @@ namespace MathCompiler
             }
         }
 
-        private void saveToolStripButton_Click(object sender, EventArgs e)
+
+        private void CompileButton_Click(object sender, EventArgs e)
         {
-            SaveAsToolStripMenuItem_Click(sender, e);
-        }
-
-        private void MainIDEForm_Load(object sender, EventArgs e) { }
-
-
-        private void toolStripButton1_Click(object sender, EventArgs e)
-        {
-            List<Token> tokens = new List<Token>();
-            Lexer.Lexer lexer = new Lexer.Lexer(code.Text);
+            List<Lexer.Interfaces.IToken<string, string>> tokens = new List<Lexer.Interfaces.IToken<string, string>>();
+            Lexer.Interfaces.IStringLexer<Lexer.Interfaces.IToken<string, string>> lexer = new Lexer.Implementation.RegexLexer(code.Text);
             tokens = lexer.GetAllTokens();
 
             MathCompiler mathCompiler = new MathCompiler(tokens.ToArray());

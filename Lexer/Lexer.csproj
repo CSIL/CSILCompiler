@@ -107,11 +107,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CodeManager.cs" />
-    <Compile Include="LengthComparer.cs" />
-    <Compile Include="Lexer.cs" />
-    <Compile Include="Lexer_GetToken.cs" />
-    <Compile Include="Token.cs" />
+    <Compile Include="Interfaces\IStringLexer.cs" />
+    <Compile Include="Implementations\RegexCodeTokenizer.cs" />
+    <Compile Include="Implementations\LengthComparer.cs" />
+    <Compile Include="Implementations\RegexLexer.cs" />
+    <Compile Include="Implementations\RegexLexer_GetToken.cs" />
+    <Compile Include="Implementations\Token.cs" />
+    <Compile Include="Interfaces\IToken.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

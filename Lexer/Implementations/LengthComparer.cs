@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Lexer
+namespace Lexer.Implementation
 {
     class LengthComparer : IComparer<string>
     {
