@@ -11,33 +11,6 @@ namespace LexerTests
     {
         static int Main(string[] args)
         {
-            #region Header
-            Console.WriteLine("Automatic Tests Runner");
-            Console.WriteLine("");
-            Console.WriteLine("Executes all the tests located in referenced assemblies.");
-            Console.WriteLine("Test classes should be decorated with TestClass attribute, method should be decorated with TestMethod attribute.");
-            Console.WriteLine("At least one class from each test project should be instantiated in this project.");
-            Console.WriteLine();
-
-            // Detect Platform
-            // http://www.mono-project.com/docs/faq/technical/
-            int p = (int)Environment.OSVersion.Platform;
-            if ((p == 4) || (p == 6) || (p == 128))
-                Console.WriteLine("Running on Unix");
-            else
-                Console.WriteLine("NOT running on Unix");
-            // Detect Mono
-            Type t = Type.GetType("Mono.Runtime");
-            if (t != null)
-                Console.WriteLine("Running with the Mono VM");
-            else
-                Console.WriteLine("NOT running with the Mono VM");
-            // Check where is our .NET Framework Assemblies
-            Console.Write(".NET Framework Assemblies Path: ");
-            Console.Write(typeof(Console).Assembly.CodeBase);
-            Console.WriteLine();
-            Console.WriteLine();
-            #endregion Header
 
             //--------------------------------------------------------------
             // Add initialization of any class from each one of projects 
