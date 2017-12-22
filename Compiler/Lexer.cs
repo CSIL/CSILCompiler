@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Compiler.Lexer
+namespace Lexer
 {
     /// <summary>
     /// A program to go through the input and get a list of the tokens in it

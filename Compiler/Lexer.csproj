@@ -108,11 +108,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Lexer\CodeManager.cs" />
-    <Compile Include="Lexer\LengthComparer.cs" />
-    <Compile Include="Lexer\Lexer.cs" />
-    <Compile Include="Lexer\Lexer_GetToken.cs" />
-    <Compile Include="Lexer\Token.cs" />
+    <Compile Include="CodeManager.cs" />
+    <Compile Include="LengthComparer.cs" />
+    <Compile Include="Lexer.cs" />
+    <Compile Include="Lexer_GetToken.cs" />
+    <Compile Include="Token.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

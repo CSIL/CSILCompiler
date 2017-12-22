@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using Lexer;
+
 namespace MathCompiler
 {
     public partial class MainIDEForm : Form
@@ -59,8 +61,8 @@ namespace MathCompiler
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            List<Compiler.Lexer.Token> tokens = new List<Compiler.Lexer.Token>();
-            Compiler.Lexer.Lexer lexer = new Compiler.Lexer.Lexer(code.Text);
+            List<Token> tokens = new List<Token>();
+            Lexer.Lexer lexer = new Lexer.Lexer(code.Text);
             tokens = lexer.GetAllTokens();
 
             MathCompiler mathCompiler = new MathCompiler(tokens.ToArray());

@@ -112,9 +112,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Compiler\Compiler.csproj">
+    <ProjectReference Include="..\Compiler\Lexer.csproj">
       <Project>{709e92eb-e479-4911-8b09-3a09146d66da}</Project>
-      <Name>Compiler</Name>
+      <Name>Lexer</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
