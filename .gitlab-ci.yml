@@ -14,7 +14,7 @@ compile:
 pages:
     stage: deploy
     script:
-        - cp -r html public
+        - cp -r html/* public
     artifacts:
         paths:
             - public
