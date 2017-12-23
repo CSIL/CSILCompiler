@@ -8,3 +8,15 @@ compile:
     script:
         - nuget restore
         - MONO_IOMAP=case xbuild /t:Build /p:Configuration="Release" /p:Platform="x64" Compiler.sln
+
+image: ruby:2.1
+
+pages:
+    script:
+        - gem install jekyll
+        - jekyll build -d public/
+    artifacts:
+        paths:
+            - public
+        only:
+            - master
