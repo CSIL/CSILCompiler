@@ -2,6 +2,7 @@ image: mono:4.4.0.182
 
 stages:
   - build
+  - deploy
   
 compile:
     stage: build
@@ -9,14 +10,15 @@ compile:
         - nuget restore
         - MONO_IOMAP=case xbuild /t:Build /p:Configuration="Release" /p:Platform="x64" Compiler.sln
 
-image: ruby:2.1
 
 pages:
+    stage: deploy
     script:
-        - gem install jekyll
-        - jekyll build -d public/
+        - mkdir .public
+        - cp -r * .public
+        - mv .public public
     artifacts:
         paths:
             - public
-        only:
-            - master
+    only:
+        - master
