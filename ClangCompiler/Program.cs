@@ -18,27 +18,37 @@ namespace ClangCompiler
 
         static void Main(string[] args)
         {
-            while((curcode = Console.ReadLine()) != "")
+            while (true)
             {
-                code += curcode;
+                code = "";
+                while ((curcode = Console.ReadLine()) != "")
+                {
+                    code += curcode;
+                }
+                Lexer.Interfaces.IStringLexer<Lexer.Interfaces.IToken<string, string>> tokenizer = new Lexer.Implementation.RegexLexer(code);
+                List<Lexer.Interfaces.IToken<string, string>> tokens = tokenizer.GetAllTokens();
+                try
+                {
+                    Syntax(tokens.ToArray());
+                    Console.WriteLine("Integer Variables");
+                    foreach (KeyValuePair<string, int> variable in intvars)
+                    {
+                        Console.WriteLine(variable.Key + " " + variable.Value);
+                    }
+                    Console.WriteLine("\nFloating Variables");
+                    foreach (KeyValuePair<string, float> variable in floatvars)
+                    {
+                        Console.WriteLine(variable.Key + " " + variable.Value);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
-            Lexer.Interfaces.IStringLexer<Lexer.Interfaces.IToken<string, string>> tokenizer = new Lexer.Implementation.RegexLexer(code);
-            List<Lexer.Interfaces.IToken<string, string>> tokens = tokenizer.GetAllTokens();
-            Syntax(tokens.ToArray());
-            Console.WriteLine("Integer Variables");
-            foreach (KeyValuePair<string, int> variable in intvars)
-            {
-                Console.WriteLine(variable.Key + " " + variable.Value);
-            }
-            Console.WriteLine("\nFloating Variables");
-            foreach (KeyValuePair<string, float> variable in floatvars)
-            {
-                Console.WriteLine(variable.Key + " " + variable.Value);
-            }
-            Console.ReadKey();
         }
 
-        public static void Eat(string type)
+        public static void Eat(string type, string errorMessage = "Wrong Token Type")
         {
             if (tokIndex < tokens.Length && tokens[tokIndex].GetTokenType() == type)
             {
@@ -46,7 +56,7 @@ namespace ClangCompiler
             }
             else
             {
-                throw new ArgumentException("Wrong token type");
+                throw new ArgumentException(errorMessage);
             }
         }
 
@@ -62,8 +72,8 @@ namespace ClangCompiler
                     {
                         if (tokens[tokIndex].GetTokenType() == "identifier")
                         {
-                            Eat("identifier");
-                            Eat("assign");
+                            Eat("identifier", "Error, you cannot create an unnamed variable");
+                            Eat("assign", "Error you currently cannot create a variable without a value");
                             if (!intvars.ContainsKey(tokens[tokIndex - 2].GetValue()) && !floatvars.ContainsKey(tokens[tokIndex - 2].GetValue()))
                             {
                                 intvars.Add(tokens[tokIndex - 2].GetValue(), 0);
@@ -83,8 +93,8 @@ namespace ClangCompiler
                     {
                         if (tokens[tokIndex].GetTokenType() == "identifier")
                         {
-                            Eat("identifier");
-                            Eat("assign");
+                            Eat("identifier", "Error You cannot create an unnamed variable");
+                            Eat("assign", "Error, you cannot create an unnamed variable without a value");
                             if (!floatvars.ContainsKey(tokens[tokIndex - 2].GetValue()) && !intvars.ContainsKey(tokens[tokIndex - 2].GetValue()))
                             {
                                 floatvars.Add(tokens[tokIndex - 2].GetValue(), 0);
@@ -97,15 +107,15 @@ namespace ClangCompiler
                             {
                                 throw new Exception("Cannot create new variable with the same name");
                             }
-                            Eat("eos");
+                            Eat("eos", "Error, semicolon expected");
                         }
                     }
                 } else
                 {
                     if (tokens[tokIndex].GetTokenType() == "identifier")
                     {
-                        Eat("identifier");
-                        Eat("assign");
+                        Eat("identifier", "Error, lvalue expected");
+                        Eat("assign", "you cannot just state a variable name");
                         if (intvars.ContainsKey(tokens[tokIndex - 2].GetValue()))
                         {
                             intvars[tokens[tokIndex - 2].GetValue()] = (int)Expression();
@@ -117,7 +127,7 @@ namespace ClangCompiler
                         {
                             throw new Exception("Error: Attempted to assign unidentified variable");
                         }
-                        Eat("eos");
+                        Eat("eos", "error, semicolon expected");
                     }
                 }
             }
@@ -128,7 +138,7 @@ namespace ClangCompiler
             float value = Term();
             while (tokIndex< tokens.Length && new List<string>() {"add", "sub" }.Contains(tokens[tokIndex].GetTokenType()))
             {
-                Eat(tokens[tokIndex].GetTokenType());
+                Eat(tokens[tokIndex].GetTokenType(), "Error, expected ADDop");
                 if(tokens[tokIndex-1].GetValue() == "+")
                 {
                     value += Term();
@@ -145,7 +155,7 @@ namespace ClangCompiler
             float value = Factor();
             while (tokIndex< tokens.Length && new List<string>() { "mul", "div" }.Contains(tokens[tokIndex].GetTokenType()))
             {
-                Eat(tokens[tokIndex].GetTokenType());
+                Eat(tokens[tokIndex].GetTokenType(), "Error, expected MULop");
                 if (tokens[tokIndex - 1].GetValue() == "*")
                 {
                     value *= Factor();

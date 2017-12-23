@@ -37,10 +37,9 @@ namespace Lexer.Implementation
                 { "[0-9]*[\\.][0-9]+", "floating_constant" },
                 { "[0-9]+", "integer_constant" },
 
-                { "[_a-zA-Z][_a-zA-Z0-9]*", "identifier"},
+                { "[_a-zA-Z]\\w*", "identifier"},
 
                 { "\\+", "add" },
-                { "\\-", "sub" },
                 { "\\*", "mul" },
                 { "\\/", "div" },
                 { "\\|", "orop" },
@@ -48,13 +47,16 @@ namespace Lexer.Implementation
                 { "\\^", "exor" },
                 { ">>", "shr" },
                 { "<<", "shl" },
+                { "\\~", "complement"},
+                { "\\!", "not"},
+                { "\\-", "minus"},
 
                 { "\\(", "lparen" },
                 { "\\)", "rparen" },
                 { "\\[", "lsqare" },
                 { "\\]", "rsqare" },
-                { "\\{", "rbracket" },
-                { "\\}", "lbracket" },
+                { "\\}", "rbracket" },
+                { "\\{", "lbracket" },
 
                 { "=", "assign" },
 
