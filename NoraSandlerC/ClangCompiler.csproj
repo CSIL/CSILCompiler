@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{7C82ED28-3CB3-493E-961F-4CE86C3E8231}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>NoraSandlerC</RootNamespace>
-    <AssemblyName>NoraSandlerC</AssemblyName>
+    <RootNamespace>ClangCompiler</RootNamespace>
+    <AssemblyName>ClangCompiler</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

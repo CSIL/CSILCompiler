@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 
-namespace NoraSandlerC
+namespace ClangCompiler
 {
     class Program
     {
@@ -125,7 +125,7 @@ namespace NoraSandlerC
                 else
                 {
                     assemblyCode += "\txorl %edx, %edx\n";
-                    assemblyCode += "\tpop %eax\n";
+                    assemblyCode += "\tpop %ecx\n";
                     assemblyCode += "\tidivl %ecx\n";
                 }
                 
@@ -140,11 +140,12 @@ namespace NoraSandlerC
                 Expression();
                 Eat("rparen");
             }
-            else if(new List<string>() { "minus", "complement", "not", "plus" }.Contains(tokens[index].GetValue()))
+            else if(new List<string>() { "minus", "complement", "not", "plus", "inc", "dec" }.Contains(tokens[index].GetTokenType()))
             {
-                assemblyCode += "\tpop %eax\n";
-                UnaryOp();
+                int ind = index;
+                Eat(tokens[index].GetTokenType());
                 Factor();
+                UnaryOp(tokens[ind]);
             }
             else if(tokens[index].GetTokenType() == "identifier")
             {
@@ -160,26 +161,28 @@ namespace NoraSandlerC
             }
         }
 
-        private static void UnaryOp()
+        private static void UnaryOp(Lexer.Interfaces.IToken<string, string> token)
         {
-            Eat(tokens[index].GetTokenType());
-            switch (tokens[index - 1].GetValue())
+            switch (token.GetValue())
             {
                 case "-":
                     assemblyCode += "\tneg %eax\n";
-                    assemblyCode += "\tpush %eax\n";
                     break;
                 case "+":
                     break;
                 case "~":
                     assemblyCode += "\tnot %eax\n";
-                    assemblyCode += "\tpush %eax\n";
                     break;
                 case "!":
                     assemblyCode += "\tcmpl $0, %eax\n";
                     assemblyCode += "\tmovl $0, %eax\n";
                     assemblyCode += "\tsete %al\n";
-                    assemblyCode += "\tpush %eax\n";
+                    break;
+                case "++":
+                    assemblyCode += "\tinc %eax\n";
+                    break;
+                case "--":
+                    assemblyCode += "\tdec %eax\n";
                     break;
 
             }

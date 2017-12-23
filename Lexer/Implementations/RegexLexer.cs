@@ -40,6 +40,8 @@ namespace Lexer.Implementation
                 { "[_a-zA-Z]\\w*", "identifier"},
 
                 { "\\+", "plus" },
+                { "\\+\\+", "inc"},
+                { "\\-\\-", "dec"},
                 { "\\*", "mul" },
                 { "\\/", "div" },
                 { "\\|", "orop" },
