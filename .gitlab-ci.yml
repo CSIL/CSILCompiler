@@ -9,14 +9,3 @@ compile:
     script:
         - nuget restore
         - MONO_IOMAP=case xbuild /t:Build /p:Configuration="Release" /p:Platform="x64" Compiler.sln
-
-
-pages:
-    stage: deploy
-    script:
-        - cp -r html/* public
-    artifacts:
-        paths:
-            - public
-    only:
-        - master
