@@ -4,7 +4,7 @@ VisualStudioVersion = 15.0.27205.2004
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lexer", "Lexer\Lexer.csproj", "{709E92EB-E479-4911-8B09-3A09146D66DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClangCompiler", "NoraSandlerC\ClangCompiler.csproj", "{7C82ED28-3CB3-493E-961F-4CE86C3E8231}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClangCompiler", "ClangCompiler\ClangCompiler.csproj", "{7C82ED28-3CB3-493E-961F-4CE86C3E8231}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
