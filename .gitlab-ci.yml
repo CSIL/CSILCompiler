@@ -13,7 +13,7 @@ compile:
 
 pages:
     stage: deploy
-    script
+    script:
         - cp -r html public
     artifacts:
         paths:
