@@ -13,10 +13,9 @@ compile:
 
 pages:
     stage: deploy
-    script:
-        - mkdir .public
-        - cp -r * .public
-        - mv .public public
+    script
+        - cp -r html public
+        
     artifacts:
         paths:
             - public
