@@ -9,18 +9,22 @@ namespace RoseBud
 {
     class RosebudProgramAST
     {
-        public RosebudEntryAST entry;
-        public List<RosebudImportAST> imports = new List<RosebudImportAST>();
-        public List<RosebudFunctionAST> functions = new List<RosebudFunctionAST>();
+        private RosebudEntryAST entry;
+        private List<RosebudImportAST> imports = new List<RosebudImportAST>();
+        private List<RosebudFunctionAST> functions = new List<RosebudFunctionAST>();
+
+        public RosebudEntryAST Entry { get => entry; set => entry = value; }
+        public List<RosebudImportAST> Imports { get => imports; set => imports = value; }
+        public List<RosebudFunctionAST> Functions { get => functions; set => functions = value; }
 
         public override string ToString()
         {
-            string value = entry.ToString();
-            foreach(RosebudImportAST import in imports)
+            string value = Entry.ToString();
+            foreach(RosebudImportAST import in Imports)
             {
                 value += " " + import;
             }
-            foreach(RosebudFunctionAST function in functions)
+            foreach(RosebudFunctionAST function in Functions)
             {
                 value += " " + function;
             }
@@ -30,24 +34,29 @@ namespace RoseBud
 
     public class RosebudFunctionAST
     {
-        public Token name;
-        public List<RosebudDeclarationAST> arguments;
-        public List<RosebudStatementAST> statements = new List<RosebudStatementAST>();
-        public RosebudReturnAST rosebudReturn;
+        private Token name;
+        private List<RosebudDeclarationAST> arguments;
+        private List<RosebudStatementAST> statements = new List<RosebudStatementAST>();
+        private RosebudReturnAST rosebudReturn;
+
+        public Token Name { get => name; set => name = value; }
+        public List<RosebudDeclarationAST> Arguments { get => arguments; set => arguments = value; }
+        public List<RosebudStatementAST> Statements { get => statements; set => statements = value; }
+        public RosebudReturnAST RosebudReturn { get => rosebudReturn; set => rosebudReturn = value; }
 
         public override string ToString()
         {
-            string value = name.ToString();
-            foreach(RosebudDeclarationAST declaration in arguments)
+            string value = Name.ToString();
+            foreach(RosebudDeclarationAST declaration in Arguments)
             {
                 value += " " + declaration;
             }
             value += "      ";
-            foreach (RosebudStatementAST statement in statements)
+            foreach (RosebudStatementAST statement in Statements)
             {
                 value += " " + statement;
             }
-            value += " " + rosebudReturn.ToString();
+            value += " " + RosebudReturn.ToString();
             return value;
 
         }
@@ -55,50 +64,72 @@ namespace RoseBud
 
     public class RosebudDeclarationAST
     {
-        public Token name;
-        public Token type;
-        public RosebudMathValueAST value;
+        private Token name;
+        private Token type;
+        private RosebudMathValueAST value;
+
+        public Token Name { get => name; set => name = value; }
+        public Token Type { get => type; set => type = value; }
+        public RosebudMathValueAST Value { get => value; set => this.value = value; }
 
         public override string ToString()
         {
-            return name + " " + type + " " + value;
+            return Name + " " + Type + " " + Value;
         }
     }
 
     public class RosebudReturnAST
     {
-        public RosebudMathValueAST expression;
+        private RosebudMathValueAST expression;
+
+        public RosebudMathValueAST Expression { get => expression; set => expression = value; }
 
         public override string ToString()
         {
-            return expression.ToString();
+            return Expression.ToString();
         }
     }
 
     public class RosebudMathValueAST
     {
-        public RosebudMathValueAST left, right; public Token op;
+        private RosebudMathValueAST right;
+        private Token op;
+        private RosebudMathValueAST left;
+
+        public RosebudMathValueAST Left { get => left; set => left = value; }
+        public RosebudMathValueAST Right { get => right; set => right = value; }
+        public Token Op { get => op; set => op = value; }
     }
 
     public class RosebudFactorAST: RosebudMathValueAST
     {
-        public RosebudFunctionCallAST toCall;
-        public RosebudMathValueAST expression;
-        public Token value;
+        private RosebudFunctionCallAST toCall;
+        private RosebudMathValueAST expression;
+        private Token value;
 
+        public RosebudFunctionCallAST ToCall { get => toCall; set => toCall = value; }
+        public RosebudMathValueAST Expression { get => expression; set => expression = value; }
+        public Token Value { get => value; set => this.value = value; }
     }
 
     public class RosebudFunctionCallAST
     {
-        public Token name;
-        public List<RosebudVariableAST> arguments;
+        private Token name;
+        private List<RosebudVariableAST> arguments;
+
+        public List<RosebudVariableAST> Arguments { get => arguments; set => arguments = value; }
+        public Token Name { get => name; set => name = value; }
     }
 
     public class RosebudStatementAST
     {
-        public RosebudVariableAST lvalue;
-        public RosebudMathValueAST right;
-        public RosebudVariableAST assign;
+        private RosebudVariableAST lvalue;
+        private RosebudMathValueAST right;
+        private RosebudVariableAST assign;
+
+        public RosebudMathValueAST Right { get => right; set => right = value; }
+        public RosebudVariableAST Assign { get => assign; set => assign = value; }
+        public RosebudVariableAST Lvalue { get => lvalue; set => lvalue = value; }
     }
 
     public class RosebudVariableAST

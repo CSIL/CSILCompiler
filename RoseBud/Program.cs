@@ -30,12 +30,12 @@ namespace RoseBud
             RosebudProgramAST self = new RosebudProgramAST
             {
                 // Get either the entry point of the program or null
-                entry = GetEntry()
+                Entry = GetEntry()
             };
-            if (self.entry == null)
+            if (self.Entry == null)
             {
                 // if null, create the default entry of main
-                self.entry = new RosebudEntryAST { name = new Token("ident", "main") };
+                self.Entry = new RosebudEntryAST { name = new Token("ident", "main") };
             }
 
 
@@ -44,14 +44,14 @@ namespace RoseBud
             // keep adding imports to the list if there are any
             while((import = GetImport()) != null)
             {
-                self.imports.Add(import);
+                self.Imports.Add(import);
             }
             // create a blank function node
             RosebudFunctionAST function = null;
             // keep adding functions to the list if there are any
             while(tokenStack.Peek().GetTokenType() != "eof" && (function = GetFunction()) != null)
             {
-                self.functions.Add(function);
+                self.Functions.Add(function);
             }
             // return the program
             return self;
@@ -68,18 +68,18 @@ namespace RoseBud
             RosebudFunctionAST self = new RosebudFunctionAST
             {
                 // get a name for the function
-                name = Eat("ident")
+                Name = Eat("ident")
             };
             // get rid of the parenthesis
             Eat("divider", "(");
             // get a list of arguments for the function
-            self.arguments = GetFunctionArgs();
+            self.Arguments = GetFunctionArgs();
             // get rid of the next dividers
             Eat("divider", ")");
             Eat("divider", "{");
             // get the return statement
             // TODO: Allow doing normal statements inside the function
-            self.rosebudReturn = GetReturn();
+            self.RosebudReturn = GetReturn();
             // get rid of the closing bracket
             Eat("divider", "}");
             // return the function
@@ -97,7 +97,7 @@ namespace RoseBud
             // get rid of the return statement
             Eat("keyword", "return");
             // get the expression that is the return statement
-            self.expression = GetExpression();
+            self.Expression = GetExpression();
             // get rid of the semicolon ending the statement
             Eat("eos");
             // return the return
@@ -142,20 +142,20 @@ namespace RoseBud
             // create a blank declaration and initialize it
             RosebudDeclarationAST self = new RosebudDeclarationAST()
             {
-                type = Eat("keyword", "int"),
-                name = Eat("ident"),
+                Type = Eat("keyword", "int"),
+                Name = Eat("ident"),
             };
             // check for an assignment statement
             if (tokenStack.Peek().GetTokenType() == "assign")
             {
                 Eat("assign");
                 // get an expression to assign
-                self.value = GetExpression();
+                self.Value = GetExpression();
             }
             else
             {
                 // set the default value to nothing
-                self.value = null;
+                self.Value = null;
             }
             // return the declaration
             return self;
@@ -172,7 +172,7 @@ namespace RoseBud
             RosebudMathValueAST self = new RosebudMathValueAST
             {
                 // get a multiplicative expression to evaluate
-                left = GetTerm()
+                Left = GetTerm()
             };
             // recursively scan to 
             /*
@@ -189,8 +189,8 @@ namespace RoseBud
             // recursively subdivide into terms
             if (new List<string> {"plus", "minus" }.Contains(tokenStack.Peek().GetTokenType()))
             {
-                self.op = Eat(tokenStack.Peek().GetTokenType());
-                self.right = GetExpression();
+                self.Op = Eat(tokenStack.Peek().GetTokenType());
+                self.Right = GetExpression();
             }
             return self;
         }
@@ -199,7 +199,7 @@ namespace RoseBud
         {
             RosebudMathValueAST self = new RosebudMathValueAST
             {
-                left = GetFactor()
+                Left = GetFactor()
             };
             /*
             while (new List<string> { "mul", "div" }.Contains(tokenStack.Peek().GetTokenType()))
@@ -215,8 +215,8 @@ namespace RoseBud
             */
             // recursively get factors
             if (new List<string> { "mul", "div" }.Contains(tokenStack.Peek().GetTokenType())){
-                self.op = Eat(tokenStack.Peek().GetTokenType());
-                self.right = GetFactor();
+                self.Op = Eat(tokenStack.Peek().GetTokenType());
+                self.Right = GetFactor();
             }
             
             return self;
@@ -229,16 +229,16 @@ namespace RoseBud
             {
                 Eat("divider", "(");
                 // evalueate inside parentheses first
-                self.expression = GetExpression();
+                self.Expression = GetExpression();
                 Eat("divider", ")");
             }
             else if(tokenStack.Peek().GetTokenType() == "int")
             {
-                self.value = Eat("int");
+                self.Value = Eat("int");
             }
             else
             {
-                self.toCall = GetCall();
+                self.ToCall = GetCall();
             }
 
             return self;
@@ -248,7 +248,7 @@ namespace RoseBud
         {
             RosebudFunctionCallAST self = new RosebudFunctionCallAST
             {
-                name = Eat("ident")
+                Name = Eat("ident")
             };
             Eat("divider", "(");
             Eat("divider", ")");
@@ -315,12 +315,12 @@ namespace RoseBud
 
         }
 
-        static void Eat(string type, string value)
+        static Token Eat(string type, string value)
         {
             Token t = Eat(type);
             if(t.GetValue() == value)
             {
-                return;
+                return t;
             }
             throw new ArgumentException("Error, wrong token value, expected: " +
                 value + "got: " + t.GetValue());
