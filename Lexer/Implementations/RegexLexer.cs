@@ -105,7 +105,6 @@ namespace Lexer.Implementation
                     }
                     return new Token(token.Value, curtoken);
                 }
-                curtoken = null;
             }
 
             if ((curtoken = manager.Get(".")) != null)
