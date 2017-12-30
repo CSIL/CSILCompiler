@@ -111,7 +111,6 @@
     <Compile Include="Implementations\RegexCodeTokenizer.cs" />
     <Compile Include="Implementations\LengthComparer.cs" />
     <Compile Include="Implementations\RegexLexer.cs" />
-    <Compile Include="Implementations\RegexLexer_GetToken.cs" />
     <Compile Include="Implementations\Token.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="Compiler_TemporaryKey.pfx" />

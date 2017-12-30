@@ -5,7 +5,7 @@ namespace Lexer.Implementation
     /// <summary>
     /// A program to go through the input and get a list of the tokens in it
     /// </summary>
-    public partial class RegexLexer
+    public class RegexLexer
     {
         private readonly RegexCodeTokenizer manager;
 
@@ -79,6 +79,41 @@ namespace Lexer.Implementation
             } while (t.GetTokenType() != "eof");
 
             return tokens;
+        }
+
+        /// <summary>
+        /// Get the next token off of the input 
+        /// base on a set or regex rules
+        /// </summary>
+        /// <returns>A new token from the input</returns>
+        public Token GetNextToken()
+        {
+            string curtoken = null;
+
+            // Ignore whitespace and comments
+            manager.Get("[ \t\r\v\n]+");
+            manager.Get(comment_sequence);
+            manager.Get("[ \t\r\v\n]+");
+
+            foreach (KeyValuePair<string, string> token in allowed_tokens)
+            {
+                if ((curtoken = manager.Get(token.Key)) != null)
+                {
+                    if (keywords.Contains(curtoken))
+                    {
+                        return new Token("keyword", curtoken);
+                    }
+                    return new Token(token.Value, curtoken);
+                }
+                curtoken = null;
+            }
+
+            if ((curtoken = manager.Get(".")) != null)
+            {
+                return new Token("invalid", curtoken);
+            }
+
+            return new Token("eof", "EOF");
         }
 
     }
