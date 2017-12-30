@@ -5,16 +5,16 @@ namespace Lexer.Implementation
     /// <summary>
     /// A program to go through the input and get a list of the tokens in it
     /// </summary>
-    public partial class RegexLexer: Interfaces.IStringLexer<Interfaces.IToken<string, string>>
+    public partial class RegexLexer
     {
-        Interfaces.ICodeTokenizer manager;
+        RegexCodeTokenizer manager;
 
-        string comment_sequence = "/\\*([^*]|[\r\n]|(\\*+([^*/]|[\r\n])))*\\*+/";
+        private readonly string comment_sequence = "/\\*([^*]|[\r\n]|(\\*+([^*/]|[\r\n])))*\\*+/";
 
         /// <summary>
         /// Default language keywords
         /// </summary>
-        List<string> keywords = new List<string>()
+        private readonly List<string> keywords = new List<string>()
         {
                "auto", "var", "int", "double",
                "entry", "global", "extern", "type",
@@ -27,7 +27,7 @@ namespace Lexer.Implementation
         /// <summary>
         /// Default allowed tokens
         /// </summary>
-        SortedDictionary<string, string> allowed_tokens = new SortedDictionary<string, string>(new LengthComparer())
+        private readonly SortedDictionary<string, string> allowed_tokens = new SortedDictionary<string, string>(new LengthComparer())
             {
                 { "[0-9]*[\\.][0-9]+", "float" },
                 { "[0-9]+", "int" },
@@ -85,10 +85,10 @@ namespace Lexer.Implementation
         /// Go through the input and make a list of tokens
         /// </summary>
         /// <returns>The list of tokens representing the input</returns>
-        public List<Interfaces.IToken<string, string>> GetAllTokens()
+        public List<Token> GetAllTokens()
         {
-            Interfaces.IToken<string, string> t;
-            List<Interfaces.IToken<string, string>> tokens = new List<Interfaces.IToken<string, string>>();
+            Token t;
+           List<Token> tokens = new List<Token>();
             while((t = GetNextToken()).GetTokenType() != "eof")
             {
                 tokens.Add(t);

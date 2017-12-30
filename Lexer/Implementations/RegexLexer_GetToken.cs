@@ -2,14 +2,14 @@
 
 namespace Lexer.Implementation
 {
-    public partial class RegexLexer: Interfaces.IStringLexer<Interfaces.IToken<string, string>>
+    public partial class RegexLexer
     {
         /// <summary>
         /// Get the next token off of the input 
         /// base on a set or regex rules
         /// </summary>
         /// <returns>A new token from the input</returns>
-        public Interfaces.IToken<string, string> GetNextToken()
+        public Token GetNextToken()
         {
             string curtoken;
 

@@ -4,7 +4,7 @@
     /// <summary>
     /// A parser token
     /// </summary>
-    public class Token:Interfaces.IToken<string , string>
+    public class Token
     {
         string Type;
         string Contents;

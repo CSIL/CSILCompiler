@@ -2,7 +2,7 @@
 
 namespace Lexer.Implementation
 {
-    class RegexCodeTokenizer: Interfaces.ICodeTokenizer
+    class RegexCodeTokenizer
     {
         string Code;
 
