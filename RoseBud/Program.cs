@@ -17,7 +17,7 @@ namespace RoseBud
             tokens.Reverse();
             tokenStack = new Stack<Token>(tokens);
 
-            RosebudProgramAST program = RosebudProgram();
+            RosebudProgram();
 
         }
 
@@ -140,7 +140,7 @@ namespace RoseBud
         private static RosebudDeclarationAST GetDeclaration()
         {
             // create a blank declaration and initialize it
-            RosebudDeclarationAST self = new RosebudDeclarationAST()
+            RosebudDeclarationAST self = new RosebudDeclarationAST
             {
                 Type = Eat("keyword", "int"),
                 Name = Eat("ident"),
@@ -174,18 +174,7 @@ namespace RoseBud
                 // get a multiplicative expression to evaluate
                 Left = GetTerm()
             };
-            // recursively scan to 
-            /*
-            while(new List<string> { "plus", "minus" }.Contains(tokenStack.Peek().GetTokenType())){
-                self.op = tokenStack.Pop();
-                self.right = new RosebudMathValueAST()
-                {
-                    left = self.right,
-                    op = self.op,
-                    right = getExpression(),
-                };
-            }
-            */
+           
             // recursively subdivide into terms
             if (new List<string> {"plus", "minus" }.Contains(tokenStack.Peek().GetTokenType()))
             {
@@ -201,18 +190,7 @@ namespace RoseBud
             {
                 Left = GetFactor()
             };
-            /*
-            while (new List<string> { "mul", "div" }.Contains(tokenStack.Peek().GetTokenType()))
-            {
-                self.op = tokenStack.Pop();
-                self.right = new RosebudMathValueAST()
-                {
-                    left = self.right,
-                    op = self.op,
-                    right = getExpression(),
-                };
-            }
-            */
+           
             // recursively get factors
             if (new List<string> { "mul", "div" }.Contains(tokenStack.Peek().GetTokenType())){
                 self.Op = Eat(tokenStack.Peek().GetTokenType());
