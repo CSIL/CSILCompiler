@@ -6,8 +6,8 @@
     /// </summary>
     public class Token
     {
-        string Type;
-        string Contents;
+        readonly string Type;
+        readonly string Contents;
 
         /// <summary>
         /// Create a new token
