@@ -7,12 +7,12 @@ using Lexer.Implementation;
 
 namespace RoseBud
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
             RegexLexer lexer = new RegexLexer(Console.ReadLine());
-            foreach(Token t in lexer.GetAllTokens())
+            foreach (Token t in lexer.GetAllTokens())
             {
                 Console.WriteLine(t);
             }

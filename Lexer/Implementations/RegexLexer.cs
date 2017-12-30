@@ -7,14 +7,14 @@ namespace Lexer.Implementation
     /// </summary>
     public partial class RegexLexer
     {
-        RegexCodeTokenizer manager;
+        private readonly RegexCodeTokenizer manager;
 
         private readonly string comment_sequence = "/\\*([^*]|[\r\n]|(\\*+([^*/]|[\r\n])))*\\*+/";
 
         /// <summary>
         /// Default language keywords
         /// </summary>
-        private readonly List<string> keywords = new List<string>()
+        private readonly List<string> keywords = new List<string>
         {
                "auto", "var", "int", "double",
                "entry", "global", "extern", "type",
@@ -56,23 +56,6 @@ namespace Lexer.Implementation
         };
 
         /// <summary>
-        /// Create a new lexer
-        /// </summary>
-        /// <param name="code">the code to be parsed</param>
-        /// <param name="keywords">a list of language keywords</param>
-        /// <param name="tokens">a list of regexes and token types to compare the code to</param>
-        /// <param name="comment_sequence">the language sequence for ignorable comments</param>
-        /// <param name="include_sequence">The language sequence for includation of other files</param>
-        public RegexLexer(string code, List<string> keywords, Dictionary<string, string> tokens, 
-            string comment_sequence, string include_sequence)
-        {
-            this.manager = new RegexCodeTokenizer(code: code);
-            this.keywords = keywords;
-            this.allowed_tokens = new SortedDictionary<string, string>(tokens, new LengthComparer());
-            this.comment_sequence = comment_sequence;
-        }
-
-        /// <summary>
         /// A lexer that uses the default tokens to parse
         /// </summary>
         /// <param name="code">the code to be parsed</param>
@@ -89,10 +72,11 @@ namespace Lexer.Implementation
         {
             Token t;
            List<Token> tokens = new List<Token>();
-            while((t = GetNextToken()).GetTokenType() != "eof")
+            do
             {
+                t = GetNextToken();
                 tokens.Add(t);
-            }
+            } while (t.GetTokenType() != "eof");
 
             return tokens;
         }

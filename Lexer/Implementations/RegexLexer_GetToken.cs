@@ -11,14 +11,13 @@ namespace Lexer.Implementation
         /// <returns>A new token from the input</returns>
         public Token GetNextToken()
         {
-            string curtoken;
+            string curtoken = null;
 
             // Ignore whitespace and comments
             manager.Get("[ \t\r\v\n]+");
             manager.Get(comment_sequence);
             manager.Get("[ \t\r\v\n]+");
 
-            curtoken = "";
             foreach (KeyValuePair<string, string> token in allowed_tokens)
             {
                 if((curtoken = manager.Get(token.Key)) != null)
