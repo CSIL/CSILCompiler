@@ -17,19 +17,6 @@ namespace RoseBud
         public List<RosebudImportAST> Imports { get => imports; set => imports = value; }
         public List<RosebudFunctionAST> Functions { get => functions; set => functions = value; }
 
-        public override string ToString()
-        {
-            string value = Entry.ToString();
-            foreach(RosebudImportAST import in Imports)
-            {
-                value += " " + import;
-            }
-            foreach(RosebudFunctionAST function in Functions)
-            {
-                value += " " + function;
-            }
-            return value;
-        }
     }
 
     public class RosebudFunctionAST
@@ -44,22 +31,6 @@ namespace RoseBud
         public List<RosebudStatementAST> Statements { get => statements; set => statements = value; }
         public RosebudReturnAST RosebudReturn { get => rosebudReturn; set => rosebudReturn = value; }
 
-        public override string ToString()
-        {
-            string value = Name.ToString();
-            foreach(RosebudDeclarationAST declaration in Arguments)
-            {
-                value += " " + declaration;
-            }
-            value += "      ";
-            foreach (RosebudStatementAST statement in Statements)
-            {
-                value += " " + statement;
-            }
-            value += " " + RosebudReturn.ToString();
-            return value;
-
-        }
     }
 
     public class RosebudDeclarationAST
@@ -72,10 +43,6 @@ namespace RoseBud
         public Token Type { get => type; set => type = value; }
         public RosebudMathValueAST Value { get => value; set => this.value = value; }
 
-        public override string ToString()
-        {
-            return Name + " " + Type + " " + Value;
-        }
     }
 
     public class RosebudReturnAST
@@ -84,10 +51,6 @@ namespace RoseBud
 
         public RosebudMathValueAST Expression { get => expression; set => expression = value; }
 
-        public override string ToString()
-        {
-            return Expression.ToString();
-        }
     }
 
     public class RosebudMathValueAST
