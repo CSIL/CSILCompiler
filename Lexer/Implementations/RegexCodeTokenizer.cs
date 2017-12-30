@@ -4,16 +4,11 @@ namespace Lexer.Implementation
 {
     class RegexCodeTokenizer
     {
-        string Code;
+        private string Code;
 
         public RegexCodeTokenizer(string code)
         {
             this.Code = code;
-        }
-
-        public string Self()
-        {
-            return Code;
         }
 
         public string Get(string regex)
@@ -24,17 +19,7 @@ namespace Lexer.Implementation
                 Code = Code.Remove(0, match.Value.Length);
                 return match.Value;
             }
-            else
-            {
-                return null;
-            }
-        }
-
-        public void PutString(string toPut)
-        {
-            Code = toPut + Code;
-        }
-       
-
+            return null;
+        }    
     }
 }
