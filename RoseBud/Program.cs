@@ -7,8 +7,9 @@ using Lexer.Implementation;
 
 namespace RoseBud
 {
-    public class Program
+    static class Program
     {
+        [STAThread]
         static void Main(string[] args)
         {
             RegexLexer lexer = new RegexLexer(Console.ReadLine());
