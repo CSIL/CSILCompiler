@@ -5,6 +5,7 @@
 program:
 	| entry imports functions
 	| entry functions
+	| imports functions
 	| functions
 	;
 

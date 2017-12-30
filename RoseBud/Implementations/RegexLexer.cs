@@ -53,6 +53,7 @@ namespace Lexer.Implementation
 
                 { ";", "eos" },
                 { "\\.", "dot" },
+                { ",", "comma"}
         };
 
         /// <summary>
