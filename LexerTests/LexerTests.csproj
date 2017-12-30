@@ -28,7 +28,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <PlatformTarget>x64</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -64,9 +64,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Lexer\Lexer.csproj">
-      <Project>{709E92EB-E479-4911-8B09-3A09146D66DA}</Project>
-      <Name>Lexer</Name>
+    <ProjectReference Include="..\RoseBud\RoseBud.csproj">
+      <Project>{e638b256-ea50-4b60-aa61-cc7fafc89d8d}</Project>
+      <Name>RoseBud</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>
