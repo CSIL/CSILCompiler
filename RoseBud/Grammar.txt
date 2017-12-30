@@ -1,1 +1,82 @@
 ﻿
+// Copy this html into wordpress to use tabs
+// <pre style="font:inherit;">TEXT_HERE</pre>
+
+program:
+	| entry imports functions
+	| entry functions
+	| functions
+	;
+
+entry:
+	| "entry" IDENTIFIER ';'
+	;
+
+functions:
+	| function
+	| function functions
+	;
+
+function:
+	| functionDefinition '{' statements '}'
+	| functionDefinition '{' statements returnStatement '}'
+	;
+
+functionDefinition:
+	| IDENTIFIER '(' ')'
+	| IDENTIFIER '(' declarationList ')'
+	;
+
+declarationList:
+	| "int" IDENTIFIER
+	| "int" IDENTIFIER ',' declarationList
+	;
+
+statement:
+	| IDENTIFIER = expression ';'
+	;
+
+returnStatement:
+	| "return" expression ';'
+	;
+
+expression:
+	| term '+' term
+	| term '-' term
+	;
+
+term:
+	| factor '*' factor
+	| factor '/' factor
+	| factor '%' factor
+	;
+
+factor:
+	| NUMBER
+	| '(' expression ')'
+	| functionCall
+	;
+
+functionCall:
+	| IDENTIFIER '(' ')'
+	| IDENTIFIER '(' argumentList ')'
+	;
+
+argumentList:
+	| IDENTIFIER
+	| expression
+	;
+
+imports:
+	| import
+	| import imports
+	;
+
+import:
+	| "import" moduleName ';'
+	;
+
+moduleName:
+	| IDENTIFIER
+	| IDENTIFIER '.' moduleName
+	;
