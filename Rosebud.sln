@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lexer", "Lexer\Lexer.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoseBud", "RoseBud\RoseBud.csproj", "{E638B256-EA50-4B60-AA61-CC7FAFC89D8D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LexerTests", "LexerTests\LexerTests.csproj", "{7EA00169-1493-4985-9E9A-2FCC2C109C60}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +32,14 @@ Global
 		{E638B256-EA50-4B60-AA61-CC7FAFC89D8D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E638B256-EA50-4B60-AA61-CC7FAFC89D8D}.Release|x64.ActiveCfg = Release|Any CPU
 		{E638B256-EA50-4B60-AA61-CC7FAFC89D8D}.Release|x64.Build.0 = Release|Any CPU
+		{7EA00169-1493-4985-9E9A-2FCC2C109C60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EA00169-1493-4985-9E9A-2FCC2C109C60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EA00169-1493-4985-9E9A-2FCC2C109C60}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{7EA00169-1493-4985-9E9A-2FCC2C109C60}.Debug|x64.Build.0 = Debug|Any CPU
+		{7EA00169-1493-4985-9E9A-2FCC2C109C60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EA00169-1493-4985-9E9A-2FCC2C109C60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EA00169-1493-4985-9E9A-2FCC2C109C60}.Release|x64.ActiveCfg = Release|Any CPU
+		{7EA00169-1493-4985-9E9A-2FCC2C109C60}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

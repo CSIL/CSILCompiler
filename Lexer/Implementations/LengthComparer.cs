@@ -8,13 +8,11 @@ namespace Lexer.Implementation
         public int Compare(string x, string y)
         {
             int lengthComparison = y.Length.CompareTo(x.Length);
-            if(lengthComparison == 0)
+            if (lengthComparison == 0)
             {
                 return string.Compare(y, x, StringComparison.Ordinal);
-            } else
-            {
-                return lengthComparison;
             }
+            return lengthComparison;
         }
     }
 }
