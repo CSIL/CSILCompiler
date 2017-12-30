@@ -41,12 +41,12 @@ returnStatement:
 	| "return" expression ';'
 	;
 
-expression:
+expression: term
 	| term '+' term
 	| term '-' term
 	;
 
-term:
+term: factor
 	| factor '*' factor
 	| factor '/' factor
 	| factor '%' factor
