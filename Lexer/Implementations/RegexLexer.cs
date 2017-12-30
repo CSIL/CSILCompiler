@@ -10,21 +10,18 @@ namespace Lexer.Implementation
         Interfaces.ICodeTokenizer manager;
 
         string comment_sequence = "/\\*([^*]|[\r\n]|(\\*+([^*/]|[\r\n])))*\\*+/";
-        string include_sequence = "#include<[a-zA-Z:\\.\\\\/]+>";
 
         /// <summary>
         /// Default language keywords
         /// </summary>
         List<string> keywords = new List<string>()
         {
-                "auto",     "double", "int",      "struct",
-                "break",    "else",   "long",     "switch",
-                "case",     "enum",   "register", "typedef",
-                "char",     "extern", "return",   "union",
-                "const",    "float",  "short",    "unsigned",
-                "continue", "for",    "signed",   "void",
-                "default",  "goto",   "sizeof",   "volatile",
-                "do",       "if",     "static",   "while",
+               "auto", "var", "int", "double",
+               "entry", "global", "extern", "type",
+               "if", "elif", "else", "while", "do",
+               "import", "pass", "break", "undef",
+               "exit", "string", "return", 
+               
         };
 
         /// <summary>
@@ -32,16 +29,13 @@ namespace Lexer.Implementation
         /// </summary>
         SortedDictionary<string, string> allowed_tokens = new SortedDictionary<string, string>(new LengthComparer())
             {
-                { "\"([^\"\\\\]|\\\\.)*\"", "string_constant" },
-                { "\'([^\'\\\\]|\\\\.)*\'", "character_constant" },
-                { "[0-9]*[\\.][0-9]+", "floating_constant" },
-                { "[0-9]+", "integer_constant" },
+                { "[0-9]*[\\.][0-9]+", "float" },
+                { "[0-9]+", "int" },
 
-                { "[_a-zA-Z]\\w*", "identifier"},
+                { "[_a-zA-Z]\\w*", "ident"},
 
                 { "\\+", "plus" },
-                { "\\+\\+", "inc"},
-                { "\\-\\-", "dec"},
+               
                 { "\\*", "mul" },
                 { "\\/", "div" },
                 { "\\|", "orop" },
@@ -53,12 +47,7 @@ namespace Lexer.Implementation
                 { "\\!", "not"},
                 { "\\-", "minus"},
 
-                { "\\(", "lparen" },
-                { "\\)", "rparen" },
-                { "\\[", "lsqare" },
-                { "\\]", "rsqare" },
-                { "\\}", "rbracket" },
-                { "\\{", "lbracket" },
+                { "[\\{\\[\\(\\)\\]\\}]", "divider"},
 
                 { "=", "assign" },
 
@@ -81,7 +70,6 @@ namespace Lexer.Implementation
             this.keywords = keywords;
             this.allowed_tokens = new SortedDictionary<string, string>(tokens, new LengthComparer());
             this.comment_sequence = comment_sequence;
-            this.include_sequence = include_sequence;
         }
 
         /// <summary>

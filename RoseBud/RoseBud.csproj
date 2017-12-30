@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7C82ED28-3CB3-493E-961F-4CE86C3E8231}</ProjectGuid>
+    <ProjectGuid>{E638B256-EA50-4B60-AA61-CC7FAFC89D8D}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ClangCompiler</RootNamespace>
-    <AssemblyName>ClangCompiler</AssemblyName>
+    <RootNamespace>RoseBud</RootNamespace>
+    <AssemblyName>RoseBud</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -23,7 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>x64</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -53,6 +53,9 @@
       <Project>{709e92eb-e479-4911-8b09-3a09146d66da}</Project>
       <Name>Lexer</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Grammar.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
