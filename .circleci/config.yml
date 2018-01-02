@@ -8,6 +8,11 @@ jobs:
       - run:
           name: Compile
           command: dub build
-      - test:
+  test:
+    docker:
+      - image: dlanguage/dmd
+    steps:
+      - checkout
+      - run:
           name: Test
           command: dub test
