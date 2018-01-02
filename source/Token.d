@@ -5,6 +5,8 @@ enum TokenType {
 	STRING,
 	IDENTIFIER,
 	OPERATOR,
+	DIVIDER,
+	EOS,
 	EOF
 
 };

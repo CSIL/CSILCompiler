@@ -117,6 +117,12 @@ class Tokenizer{
 		} else if(['+', '-', '*', '/', '>', '<', '=', '&', '^', '~', '!', '%'].canFind(cur)){
 			reader.put(cur);
 			return new Token(TokenType.OPERATOR, getOp());
+		} else if(['(', ')', '{', '}', '[', ']'].canFind(cur)){
+			string value = "";
+			value ~= cur;
+			return new Token(TokenType.DIVIDER, value);
+		} else if(cur == ';'){
+			return new Token(TokenType.EOS, ";");
 		}
 		string s = "";
 		s ~= cur;

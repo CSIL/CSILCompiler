@@ -10,8 +10,10 @@ void main()
 	BufferedReader reader = new BufferedReader("test.rbc");
 	Tokenizer tokenizer = new Tokenizer(reader);
 
-	Token t = tokenizer.getToken();
-	writeln(t.type," ", t.value);
+	Token t;
+	while((t=tokenizer.getToken()).type != TokenType.EOF){
+		writeln(t.type," ", t.value);
+	}
 
 	delete tokenizer;
 	delete reader;
