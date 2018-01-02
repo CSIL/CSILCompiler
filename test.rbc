@@ -1,0 +1,7 @@
+entry main;
+
+import std.print;
+
+main(){
+	return 2;
+}

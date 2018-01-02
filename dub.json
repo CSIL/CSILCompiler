@@ -1,0 +1,9 @@
+{
+	"name": "rosebud",
+	"authors": [
+		"Thomas"
+	],
+	"description": "A compiler for the Rosebud Language",
+	"copyright": "Copyright © 2018, Thomas",
+	"license": "proprietary"
+}
