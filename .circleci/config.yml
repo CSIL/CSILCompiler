@@ -16,9 +16,8 @@ jobs:
       - run:
           name: Test
           command: dub test
-  deployment:
-    staging:
-     branch: master
-      heroku:          
-        appname: rosebudcompiler
-   
+deployment:
+  staging:
+    branch: master
+    heroku:
+      appname: rosebudcompiler
