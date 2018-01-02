@@ -1,0 +1,10 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: dlanguage:dmd
+    steps:
+      - checkout
+      - run:
+          name: Compile
+          command: dub build
