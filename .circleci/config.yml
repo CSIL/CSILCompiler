@@ -8,3 +8,6 @@ jobs:
       - run:
           name: Compile
           command: dub build
+      - test:
+          name: Test
+          command: dub test
