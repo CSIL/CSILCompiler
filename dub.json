@@ -1,0 +1,12 @@
+{
+	"name": "cslc",
+	"authors": [
+		"Thomas"
+	],
+	"description": "A compiler for CSIL",
+	"copyright": "Copyright © 2018, Thomas",
+	"license": "proprietary" ,
+	"libs": ["lex"],
+	"linkerfiles": ["lex.a"] ,
+	"lflags": ["-Llex"]
+}

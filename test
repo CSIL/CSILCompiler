@@ -1,0 +1,7 @@
+entry main;
+
+import std.stdio;
+
+function main(int argv, string argc){
+	return 2+2;
+}
