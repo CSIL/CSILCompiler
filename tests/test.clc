@@ -1,0 +1,47 @@
+module example where
+
+use modules
+	Math version 1.0.0
+	Network version 0.0.1
+	Tokenizer is Compilation version 0.1.0
+end use
+
+procedure Main where
+	in a is Integer, a is Boolean
+	out d is Integer
+	
+	do
+		input -> c is Character
+		while not (equals c EOF)
+		do
+			input -> c
+		done
+
+	done
+end procedure
+
+procedure Test where
+	in a is Array of Strings, a is Boolean
+	out d is Boolean
+
+	do
+		if b
+		then do
+			(main (get length a) b) ->  Character c
+			1 -> d
+		done
+		otherwise do
+			0 -> d
+		done
+	done
+end procedure
+
+function test where
+	in a is Integer, b is Integer
+	out c is Integer
+	do
+		(times a b) -> c
+	done
+end function
+
+end module
